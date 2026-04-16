@@ -1,7 +1,12 @@
 {{-- Main nav --}}
 <nav id="mainNav">
   <a href="{{ route('home') }}" class="nav-logo">
-    vonGriesheim
+    {{-- Escudo/Logo --}}
+    <img src="{{ asset('images/vonGriesheim-shield.svg') }}" 
+         alt="vonGriesheim" 
+         class="nav-logo-shield">
+    
+    <span class="nav-logo-text">vonGriesheim</span>
   </a>
 
   {{-- Desktop links — center --}}
@@ -36,3 +41,5 @@
   </div>
 
 </nav>
+
+

@@ -42,13 +42,13 @@
     </div> -->
 
     {{-- Decorative coat of arms --}}
-    <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none" aria-hidden="true">
+    {{-- <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none" aria-hidden="true">
         <img
             src="{{ asset('images/coat-of-arms.png') }}"
             alt=""
             style="width: 189px !important; height: 189px !important; max-width: 189px !important; opacity: 0.05; filter: invert(1); object-fit: contain; display: block; flex-shrink: 0;"
         >
-    </div>
+    </div> --}}
 
     <img
       src="{{ asset('images/Korcula_birds_eye_2.webp') }}"
@@ -673,7 +673,7 @@
       <div class="grid md:grid-cols-3 gap-0 reveal">
 
         {{-- Panel 1 — History --}}
-        <div class="relative overflow-hidden group cursor-pointer" style="height: 520px;">
+        {{-- <div class="relative overflow-hidden group cursor-pointer" style="height: 520px;">
           <div class="absolute inset-0 bg-cover bg-center zoom-bg"
                style="background-image: url('https://images.unsplash.com/photo-1555990793-da11153b2473?w=900&q=80'); background-size: cover; background-position: center;"></div>
           <div class="absolute inset-0" style="background-color: rgba(0,0,0,0.4);"></div>
@@ -687,10 +687,34 @@
                Korčula is often described as one of the most beautiful historic towns on the Adriatic. Rising from the sea on a small peninsula, the old town is a compact medieval settlement built almost entirely from local limestone. Its towers, walls and narrow streets reflect centuries of Venetian influence and maritime trade.
             </p>
           </div>
-        </div>
+        </div> --}}
+
+        {{-- Panel 1 — History --}}
+        <div class="relative overflow-hidden group cursor-pointer" style="height: 520px;">
+    
+          {{-- Imagen de fondo con zoom --}}
+          <div class="absolute inset-0 zoom-bg" 
+               style="--bg-image: url('{{ asset('images/korcula_02.webp') }}');">
+          </div>
+          
+          {{-- Overlay oscuro --}}
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-500"></div>
+          
+          {{-- Contenido --}}
+          <div class="absolute inset-0 flex flex-col justify-end p-8 lg:p-10 z-10">
+            <div class="text-3xl mb-4">⚓</div>
+            <h3 class="font-display text-2xl font-light mb-3" style="color: var(--stone-light);"
+                data-i18n="isl1_title">History & Culture</h3>
+              <div class="w-8 h-px mb-4" style="background: var(--patina);"></div>
+              <p class="text-sm font-light leading-relaxed" style="color: var(--stone); opacity: 0.8;"
+                 data-i18n="isl1_text">
+                 Korčula is often described as one of the most beautiful historic towns on the Adriatic. Rising from the sea on a small peninsula, the old town is a compact medieval settlement built almost entirely from local limestone. Its towers, walls and narrow streets reflect centuries of Venetian influence and maritime trade.              </p>
+          </div>
+          
+      </div>
 
         {{-- Panel 2 — Gastronomy --}}
-        <div class="relative overflow-hidden group cursor-pointer" style="height: 520px;">
+        {{-- <div class="relative overflow-hidden group cursor-pointer" style="height: 520px;">
           <div class="absolute inset-0 bg-cover bg-center zoom-bg"
                style="background-image: url('https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?w=900&q=80'); background-size: cover; background-position: center;"></div>
           <div class="absolute inset-0" style="background-color: rgba(0,0,0,0.4);"></div>
@@ -704,24 +728,57 @@
               Pošip white wine, Grk, fresh seafood. Korčula is one of Croatia's finest gastronomic destinations.
             </p>
           </div>
-        </div>
+        </div> --}}
+
+        {{-- Panel 2 — Gastronomy --}}
+        <div class="relative overflow-hidden group cursor-pointer" style="height: 520px;">
+    
+          {{-- Imagen de fondo con zoom --}}
+          <div class="absolute inset-0 zoom-bg" 
+               style="--bg-image: url('{{ asset('images/Korcula_night.webp') }}');">
+          </div>
+          
+          {{-- Overlay oscuro --}}
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-500"></div>
+          
+          {{-- Contenido --}}
+          <div class="absolute inset-0 flex flex-col justify-end p-8 lg:p-10 z-10">
+              <div class="text-3xl mb-4">🍷</div>
+              <h3 class="font-display text-2xl font-light mb-3" style="color: var(--stone-light);"
+                  data-i18n="isl2_title">Gastronomy & Wine</h3>
+              <div class="w-8 h-px mb-4" style="background: var(--patina);"></div>
+              <p class="text-sm font-light leading-relaxed" style="color: var(--stone); opacity: 0.8;"
+                 data-i18n="isl2_text">
+                 Pošip white wine, Grk, fresh seafood. Korčula is one of Croatia's finest gastronomic destinations.
+                </p>
+          </div>
+          
+      </div>
 
         {{-- Panel 3 — Sailing --}}
         <div class="relative overflow-hidden group cursor-pointer" style="height: 520px;">
-          <div class="absolute inset-0 bg-cover bg-center zoom-bg"
-               style="background-image: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=80'); background-size: cover; background-position: center;"></div>
-          <div class="absolute inset-0" style="background-color: rgba(0,0,0,0.4);"></div>
-          <div class="absolute inset-0 flex flex-col justify-end p-8 lg:p-10">
-            <div class="text-3xl mb-4">⛵</div>
-            <h3 class="font-display text-2xl font-light mb-3" style="color: var(--stone-light);"
-                data-i18n="isl3_title">Sailing & The Sea</h3>
-            <div class="w-8 h-px mb-4" style="background: var(--patina);"></div>
-            <p class="text-sm font-light leading-relaxed" style="color: var(--stone); opacity: 0.8;"
-               data-i18n="isl3_text">
-              Crystal-clear waters, hidden coves, and direct connections to Hvar, Dubrovnik and the Dalmatian archipelago.
-            </p>
+    
+          {{-- Imagen de fondo con zoom --}}
+          <div class="absolute inset-0 zoom-bg" 
+               style="--bg-image: url('{{ asset('images/Badija.webp') }}');">
           </div>
-        </div>
+          
+          {{-- Overlay oscuro --}}
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-500"></div>
+          
+          {{-- Contenido --}}
+          <div class="absolute inset-0 flex flex-col justify-end p-8 lg:p-10 z-10">
+              <div class="text-3xl mb-4">⛵</div>
+              <h3 class="font-display text-2xl font-light mb-3" style="color: var(--stone-light);"
+                  data-i18n="isl3_title">Sailing & The Sea</h3>
+              <div class="w-8 h-px mb-4" style="background: var(--patina);"></div>
+              <p class="text-sm font-light leading-relaxed" style="color: var(--stone); opacity: 0.8;"
+                 data-i18n="isl3_text">
+                  Crystal-clear waters, hidden coves, and direct connections to Hvar, Dubrovnik and the Dalmatian archipelago.
+              </p>
+          </div>
+          
+      </div>
 
       </div>
     </div>

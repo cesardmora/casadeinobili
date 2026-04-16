@@ -29,6 +29,29 @@ Luxury heritage rental website for Case dei Nobili — four historic residences 
 
 ---
 
+php artisan view:clear
+php artisan route:clear
+php artisan config:clear
+php artisan config:cache
+php artisan serve 
+
+
+Solución para producción:
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+php artisan optimize
+
+
+5. Imágenes sin optimizar
+	•	Usas imágenes .jpg sin formato WebP (aunque ya tienes algunas .webp)
+	•	No hay srcset para responsive images
+	•	Las imágenes de Unsplash se cargan directamente sin optimizar
+Solución:
+	•	Convertir todas las imágenes a WebP
+	•	Implementar srcset y sizes para responsive loading
+	•	Usar lazy loading nativo (loading="lazy" ya está en algunas, pero no en todas)
+
 ## 🚀 Quick Start
 
 ### 1. Clone the repository

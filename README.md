@@ -354,3 +354,35 @@ database/database.sqlite	Se crea con touch + migrate --seed
 storage/* (excepto .gitkeep)	Logs, sesiones, caché — efímeros
 .copia*, .bak	Archivos de respaldo basura
 .qwen/, X_linux/, test.php	Ficheros locales del
+
+
+
+
+Cómo acceder a cada archivo (con clave):
+Archivo	URL de acceso
+admin.php	https://casadeinobili.wantdsign.com/admin.php?key=Nobili2026Secure!
+clear.php	https://casadeinobili.wantdsign.com/clear.php?key=Nobili2026Secure!
+fix-db.php	https://casadeinobili.wantdsign.com/fix-db.php?key=Nobili2026Secure!
+fixdb.php	https://casadeinobili.wantdsign.com/fixdb.php?key=Nobili2026Secure!
+force-db.php	https://casadeinobili.wantdsign.com/force-db.php?key=Nobili2026Secure!
+info.php	https://casadeinobili.wantdsign.com/info.php?key=Nobili2026Secure!
+reseed.php	https://casadeinobili.wantdsign.com/reseed.php?key=Nobili2026Secure!
+update-site.php	https://casadeinobili.wantdsign.com/update-site.php?key=Nobili2026Secure!
+
+Sin ?key=... → aparece “Acceso denegado” con error 403.
+
+Para producción, cambia la clave:
+Busca y reemplaza Nobili2026Secure! por algo más secreto, ej: xC9#mKp2!vNobili
+
+Los archivos que debes subir al servidor ahora son:
+
+public/admin.php
+public/clear.php
+public/fix-db.php
+public/fixdb.php
+public/force-db.php
+public/info.php
+public/reseed.php
+public/update-site.php
+resources/views/layouts/app.blade.php
+public/css/tailwind.css

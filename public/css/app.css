@@ -1173,13 +1173,13 @@ body {
   }
 }
 
-/* Logo en móvil — dos líneas */
+/* Logo en móvil — dos líneas XXX */
 @media (max-width: 767px) {
-  .nav-logo {
+  /* .nav-logo {
     display: flex !important;
     flex-direction: column !important;
     line-height: 1.2 !important;
-  }
+  } */
   .nav-logo em {
     /* vertical-align: baseline !important; */
     font-size: 0.6rem !important;
@@ -1376,3 +1376,371 @@ footer[id] {
   transition-timing-function: ease-out !important;
   transition-duration: 2s !important;
 } */
+
+.prose-property {
+  color: var(--ink-soft);
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  opacity: 0.9;
+}
+
+/* Títulos de sección tipo "Accommodation & Layout" */
+.prose-property h2,
+.prose-property h3 {
+  font-family: var(--font-display, serif);
+  color: var(--patina);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Párrafos */
+.prose-property p {
+  margin-bottom: 1rem;
+}
+
+/* Listas con bullet estilizado */
+.prose-property ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.prose-property ul li {
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+
+.prose-property ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--patina);
+}
+
+/* Negrita */
+.prose-property strong {
+  color: var(--ink, #2c2c2c);
+  font-weight: 500;
+}
+
+/* Texto en cursiva */
+.prose-property em {
+  color: var(--patina);
+  font-style: italic;
+}
+
+
+
+/* En tu CSS global o componente */
+/* En tu archivo CSS global (ej: resources/css/app.css) */
+.zoom-bg {
+  /* Aplicar la imagen desde la variable CSS */
+  background-image: var(--bg-image);
+  
+  /* Comportamiento de fondo: cubrir sin deformar */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Transición suave para el zoom */
+  transition: transform 0.5s ease-out;
+  
+  /* Asegurar que el elemento tenga dimensiones */
+  will-change: transform;
+}
+
+/* Efecto zoom al hacer hover en el grupo (padre) */
+.group:hover .zoom-bg {
+  transform: scale(1.1);
+}
+
+/* Opcional: efecto más suave en móvil (desactivar zoom si se prefiere) */
+@media (hover: none) {
+  .group:hover .zoom-bg {
+    transform: none;
+  }
+}
+
+
+/* Contenedor del logo completo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;              /* Espacio entre escudo y texto */
+  text-decoration: none;
+  color: #f0e8d8;         /* Tu color actual */
+  /* font-family: 'Playfair Display', serif;  */
+  font-size: 1.25rem;     /* Ajusta según necesites */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Escudo/Logo */
+.nav-logo-shield {
+  height: 32px;           /* Altura pequeña para que no sobresalga */
+  width: auto;            /* Mantiene proporción */
+  flex-shrink: 0;         /* Evita que se encoja */
+  object-fit: contain;    /* Ajusta sin deformar */
+  filter: brightness(0) invert(1); /* Si es SVG oscuro, lo vuelve blanco */
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover opcional en el escudo */
+.nav-logo:hover .nav-logo-shield {
+  opacity: 1;
+}
+
+/* Texto del logo */
+.nav-logo-text {
+  white-space: nowrap;    /* Evita que el texto se rompa */
+  line-height: 1;
+}
+
+/* Responsive: en móvil hacerlo aún más pequeño */
+@media (max-width: 768px) {
+  .nav-logo-shield {
+    height: 24px;         /* Más pequeño en móvil */
+  }
+  
+  .nav-logo {
+    font-size: 1rem;
+    gap: 8px;
+  }
+  
+  .nav-logo-text {
+    display: none;        /* Opcional: ocultar texto en móvil si no cabe */
+  }
+}
+
+
+
+
+
+
+
+
+/* ============================================
+   NAV BAR STYLES
+   ============================================ */
+
+   #mainNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+    background: rgba(13, 31, 40, 0.95);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+  
+  /* Logo Container */
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #f0e8d8;
+    /* font-family: 'Playfair Display', serif; */
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 1001;
+  }
+  
+  /* Shield/Logo Image */
+  .nav-logo-shield {
+    height: 32px;
+    width: auto;
+    flex-shrink: 0;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-logo:hover .nav-logo-shield {
+    opacity: 1;
+  }
+  
+  /* Logo Text - MUST BE VISIBLE ON MOBILE */
+  .nav-logo-text {
+    white-space: nowrap;
+    line-height: 1;
+    display: block; /* ← IMPORTANTE: visible siempre */
+  }
+  
+  /* Desktop Navigation Links */
+  .nav-links-desktop {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2.5rem;
+  }
+  
+  .nav-links-desktop li {
+    margin: 0;
+  }
+  
+  .nav-links-desktop a {
+    color: #f0e8d8;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    font-weight: 300;
+  }
+  
+  .nav-links-desktop a:hover {
+    opacity: 1;
+  }
+  
+  /* Nav Right Section */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  /* Language Toggle */
+  .nav-lang-inline {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .lang-btn {
+    background: none;
+    border: none;
+    color: #f0e8d8;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .lang-btn.active,
+  .lang-btn:hover {
+    opacity: 1;
+  }
+  
+  /* Mobile Menu Button (Hamburger) */
+  #mobileMenuBtn {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+  }
+  
+  /* ============================================
+     MOBILE MENU STYLES
+     ============================================ */
+  
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(13, 31, 40, 0.98);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .mobile-menu.active {
+    display: flex;
+  }
+  
+  .mobile-menu a {
+    color: #f0e8d8;
+    text-decoration: none;
+    font-size: 1.5rem;
+    /* font-family: 'Playfair Display', serif; */
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+  
+  .mobile-menu a:hover {
+    opacity: 1;
+  }
+  
+  /* ============================================
+     RESPONSIVE - MOBILE
+     ============================================ */
+  
+  @media (max-width: 768px) {
+    #mainNav {
+      padding: 1rem 1.5rem;
+    }
+  
+    /* Logo en móvil - AMBOS elementos visibles */
+    .nav-logo {
+      gap: 8px;
+      font-size: 1rem; /* Texto un poco más pequeño pero visible */
+    }
+  
+    .nav-logo-shield {
+      height: 28px; /* Ligeramente más pequeño pero visible */
+    }
+  
+    .nav-logo-text {
+      display: block; /* ← CRUCIAL: mostrar texto en móvil */
+    }
+  
+    /* Ocultar links desktop en móvil */
+    .nav-links-desktop {
+      display: none;
+    }
+  
+    /* Mostrar hamburger en móvil */
+    #mobileMenuBtn {
+      display: block;
+    }
+  
+    /* Language toggle en móvil - dentro del menú o visible */
+    .nav-lang-inline {
+      display: none; /* Opcional: mover al menú mobile */
+    }
+  }
+  
+  /* Tablet */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    #mainNav {
+      padding: 1.25rem 2rem;
+    }
+  
+    .nav-links-desktop {
+      gap: 1.5rem;
+    }
+  
+    .nav-links-desktop a {
+      font-size: 0.7rem;
+    }
+  }
+
+  /* En móvil: */
