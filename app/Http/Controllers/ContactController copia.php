@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContactRequest;
 use App\Models\ContactInquiry;
 use App\Mail\ContactNotification;
-use App\Mail\CustomerThanksNotification; // <-- 1. AÑADIDO EL USE
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
@@ -31,27 +30,15 @@ class ContactController extends Controller
             'ip_address'      => $request->ip(),
         ]);
 
-        // --- ENVÍOS DE EMAIL ---
-        
-        // 2. Envío para TI (Administrador)
+        // Send admin notification email
         try {
-            // Mail::to(config('mail.admin_email', env('ADMIN_EMAIL')))
-            //     ->send(new ContactNotification($inquiry));
-            Mail::to(env('ADMIN_EMAIL', 'gytiming@gmail.com'))->send(new ContactNotification($inquiry));
-
+            Mail::to(config('mail.admin_email', env('ADMIN_EMAIL')))
+                ->send(new ContactNotification($inquiry));
         } catch (\Exception $e) {
-            logger()->error('Admin mail failed: ' . $e->getMessage());
+            // Log but don't fail the user request
+            logger()->error('Contact mail failed: ' . $e->getMessage());
         }
 
-        // 3. Envío para el CLIENTE (Agradecimiento)
-        try {
-            Mail::to($inquiry->email)
-                ->send(new CustomerThanksNotification($inquiry));
-        } catch (\Exception $e) {
-            logger()->error('Customer thanks mail failed: ' . $e->getMessage());
-        }
-
-        // 4. Redirigir a la página de gracias
         return redirect()
             ->route('contact.thanks')
             ->with('success', 'Hemos recibido su consulta. Le contactaremos en menos de 48 horas.');
@@ -65,3 +52,4 @@ class ContactController extends Controller
         return view('pages.contact-thanks');
     }
 }
+

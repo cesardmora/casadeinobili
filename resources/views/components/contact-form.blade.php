@@ -1,5 +1,16 @@
 @props(['properties' => collect(), 'inquiryType' => null])
 
+@if ($errors->any())
+    <div style="background: #fee2e2; border: 1px solid #ef4444; color: #b91c1c; padding: 1rem; margin-bottom: 1rem;">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
 <form action="{{ route('contact.store') }}" method="POST" class="space-y-6" novalidate>
   @csrf
   @if($inquiryType)

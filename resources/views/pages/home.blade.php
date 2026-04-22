@@ -81,6 +81,12 @@
         
             {{-- REEMPLAZO DEL H1 POR SVG --}}
             <div class="mb-8">
+              <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-light leading-tight mb-8 hidden"
+                  style="color: var(--stone-light);">
+                <span data-i18n="">Case dei</span>
+                <em class="font-normal" style="color: var(--patina-light);"
+                    data-i18n="">Nobili</em>
+              </h1>
                 <img 
                     src="{{ asset('images/case-dei-nobili-logo.svg') }}" 
                     alt="Case dei Nobili" 
@@ -360,7 +366,6 @@
         <div class="flex items-end justify-between gap-8">
           <h2 class="font-display text-4xl md:text-5xl font-light" style="color: var(--stone);">
             Four <em>extraordinary</em><br>residences</h2>
-          </h2>
           <div class="hidden md:block w-32 h-px" style="background: var(--stone-light);"></div>
         </div>
       </div>

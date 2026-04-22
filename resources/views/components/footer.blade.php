@@ -20,7 +20,7 @@
     <ul class="footer-links">
       <li><a href="/properties/ca-serenissima" data-i18n="fp1">Ca Serenissima</a></li>
       <li><a href="/properties/palazzo-veneto" data-i18n="fp2">Palazzo Veneto</a></li>
-      <li><a href="/properties/palazzino-nobile" data-i18n="fp3"><Pic></Pic>Palazzino Nobile</a></li>
+      <li><a href="/properties/palazzino-nobile" data-i18n="fp3">Palazzino Nobile</a></li>
       <li><a href="/properties/dimora-marina">Dimora Marina</a></li>
     </ul>
   </div>

@@ -147,12 +147,15 @@
 
   {{-- Contact / Inquiry --}}
   <section class="private-section py-24 lg:py-32 px-6 lg:px-12">
-    <div class="max-w-3xl mx-auto relative z-10 reveal">
+    <div class="max-w-3xl mx-auto relative z-[999]">
       <p class="text-xs tracking-widest uppercase mb-4" style="color: var(--patina);">Check Availability</p>
       <h2 class="font-display text-4xl font-light mb-8" style="color: var(--stone-light);">
         Book {{ $property->name }}
       </h2>
-      <x-contact-form :properties=\"collect([$property])\" inquiry-type="rental" />
+      {{-- @dump($property) --}}
+      {{-- <x-contact-form :properties=\"collect([$property])\" inquiry-type="rental" /> --}}
+      @include('components.contact-form', ['properties' => collect([$property]), 'inquiryType' => 'rental'])
+
     </div>
   </section>
 

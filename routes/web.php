@@ -33,3 +33,13 @@ Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsle
 // Static pages
 Route::view('/privacy-policy', 'pages.privacy')->name('privacy');
 Route::view('/terms', 'pages.terms')->name('terms');
+
+// Cambia .name('inquiry.store') por:
+// Route::post('/inquiry', [InquiryController::class, 'store'])->name('contact.store');
+// Ruta para procesar el formulario
+Route::post('/inquiry', [ContactController::class, 'store'])->name('inquiry.store');
+
+// Ruta para la página de agradecimiento (ESTA ES LA QUE FALTA)
+Route::get('/gracias', [ContactController::class, 'thanks'])->name('contact.thanks');
+
+
