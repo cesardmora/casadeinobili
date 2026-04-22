@@ -82,13 +82,10 @@
             Through TCG Unique Properties d.o.o. (Croatia) and TCG Sustainable Investments S.L. (Spain), the group develops and manages a select portfolio of high-quality residential properties. <br> --}}
           </p>
           <p class="text-base lg:text-lg font-light leading-relaxed mb-8" style="color: var(--ink-soft);" >
-            Tatjana von Griesheim-Radović, a landscape architect with Montenegrin roots, and Georg von Griesheim, of German descent, born in Colombia and formerly an investment banker and publisher, share a long-standing passion for exceptional properties - often in historic or culturally significant locations.
-
-            What began as a personal interest gradually evolved into a professional venture focused on the careful restoration and development of distinctive residences. Working with historic buildings requires time, dedication, and respect for their original character; every project is therefore unique.
-
+            Tatjana von Griesheim-Radović, a landscape architect with Montenegrin roots, and Georg von Griesheim, of German descent, born in Colombia and formerly an investment banker and publisher, share a long-standing passion for exceptional properties - often in historic or culturally significant locations.<br><br>
+            What began as a personal interest gradually evolved into a professional venture focused on the careful restoration and development of distinctive residences. Working with historic buildings requires time, dedication, and respect for their original character; every project is therefore unique.<br><br>
+            <em class="br">Through TCG Unique Properties d.o.o. (Croatia) and TCG Sustainable Investments S.L. (Spain), the group develops and manages a select portfolio of high-quality residential properties. </em>
             
-            <lmata class="br"></lmata>
-            Through TCG Unique Properties d.o.o. (Croatia) and TCG Sustainable Investments S.L. (Spain), the group develops and manages a select portfolio of high-quality residential properties. 
           </p>
         </div>
 

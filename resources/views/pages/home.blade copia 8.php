@@ -283,7 +283,7 @@
                 'Prime Old Town location',
                 'Gothic & Renaissance architecture',
                 'Premium interiors & antiques',
-                'Underfloor heating & air conditioning',
+                'Underfloor heating &amp; air conditioning',
                 'High-speed WiFi & Smart TV',
                 'Concierge & bespoke experiences',
                 'Direct booking preferred',
@@ -719,7 +719,7 @@
         </div> --}}
 
         {{-- Panel 1 — History --}}
-        <div class="relative overflow-hidden group cursor-pointer" style="height: 720px;"> {{-- ★ HIGHLIGHTS PROPOSAL: was 520px --}}
+        <div class="relative overflow-hidden group cursor-pointer" style="height: 520px;">
     
           {{-- Imagen de fondo con zoom --}}
           <div class="absolute inset-0 zoom-bg" 
@@ -737,26 +737,7 @@
               <div class="w-8 h-px mb-4" style="background: var(--patina);"></div>
               <p class="text-sm font-light leading-relaxed" style="color: var(--stone); opacity: 0.8;"
                  data-i18n="isl1_text">
-                 Korčula is widely regarded as one of the Adriatic's most beautiful historic towns. Rising from the sea on a small peninsula, its medieval streets, Venetian façades and elegant squares create an atmosphere of timeless Mediterranean charm; small cafés opening onto quiet squares, the stone houses polished by centuries of footsteps, and the slow Mediterranean evenings when the entire town seems to gather along the waterfront.</p>
-
-            {{-- ★ HIGHLIGHTS PROPOSAL — revert: remove this <ul> block + restore height to 520px --}}
-            <ul class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-2">
-              @foreach([
-                'Medieval walled town of Venetian heritage',
-                'Town Walls & Towers',
-                'Cathedral of St. Mark',
-                "Bishop's Treasury",
-                'Moreška performances',
-                'Korkyra Baroque Festival',
-              ] as $h)
-              <li class="flex items-start gap-2">
-                <span class="shrink-0 rounded-full" style="width:4px;height:4px;margin-top:0.4em;background:var(--patina-light);"></span>
-                <span class="text-[10px] tracking-wider uppercase font-light leading-snug" style="color:var(--stone);opacity:0.85;">{{ $h }}</span>
-              </li>
-              @endforeach
-            </ul>
-            {{-- ★ END HIGHLIGHTS PROPOSAL --}}
-
+                 Korčula is widely regarded as one of the Adriatic’s most beautiful historic towns. Rising from the sea on a small peninsula, its medieval streets, Venetian façades and elegant squares create an atmosphere of timeless Mediterranean charm; small cafés opening onto quiet squares, the stone houses polished by centuries of footsteps, and the slow Mediterranean evenings when the entire town seems to gather along the waterfront.</p>
           </div>
           
       </div>
@@ -779,7 +760,7 @@
         </div> --}}
 
         {{-- Panel 2 — Gastronomy --}}
-        <div class="relative overflow-hidden group cursor-pointer" style="height: 720px;"> {{-- ★ HIGHLIGHTS PROPOSAL: was 520px --}}
+        <div class="relative overflow-hidden group cursor-pointer" style="height: 520px;">
     
           {{-- Imagen de fondo con zoom --}}
           <div class="absolute inset-0 zoom-bg" 
@@ -797,33 +778,14 @@
               <div class="w-8 h-px mb-4" style="background: var(--patina);"></div>
               <p class="text-sm font-light leading-relaxed" style="color: var(--stone); opacity: 0.8;"
                  data-i18n="isl2_text">
-                 Food and wine are central to life on Korčula. Fresh Adriatic fish, olive oil, seasonal produce and traditional Dalmatian recipes define the local table, while the island and nearby Pelješac peninsula are known for some of Croatia's finest wines (Pošip and Grk).
+                 Food and wine are central to life on Korčula. Fresh Adriatic fish, olive oil, seasonal produce and traditional Dalmatian recipes define the local table, while the island and nearby Pelješac peninsula are known for some of Croatia’s finest wines (Pošip and Grk).
                 </p>
-
-            {{-- ★ HIGHLIGHTS PROPOSAL — revert: remove this <ul> block + restore height to 520px --}}
-            <ul class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-2">
-              @foreach([
-                'Michelin-recommended dining',
-                'Fresh Adriatic seafood (Black risotto, Peka, Žrnovski makaruni,)',
-                'Local olive oil',
-                'Pošip & Grk wines',
-                'Pelješac reds',
-                'Private tastings on request',
-              ] as $h)
-              <li class="flex items-start gap-2">
-                <span class="shrink-0 rounded-full" style="width:4px;height:4px;margin-top:0.4em;background:var(--patina-light);"></span>
-                <span class="text-[10px] tracking-wider uppercase font-light leading-snug" style="color:var(--stone);opacity:0.85;">{{ $h }}</span>
-              </li>
-              @endforeach
-            </ul>
-            {{-- ★ END HIGHLIGHTS PROPOSAL --}}
-
           </div>
           
       </div>
 
         {{-- Panel 3 — Sailing --}}
-        <div class="relative overflow-hidden group cursor-pointer" style="height: 720px;"> {{-- ★ HIGHLIGHTS PROPOSAL: was 520px --}}
+        <div class="relative overflow-hidden group cursor-pointer" style="height: 520px;">
     
           {{-- Imagen de fondo con zoom --}}
           <div class="absolute inset-0 zoom-bg" 
@@ -843,24 +805,6 @@
                  data-i18n="isl3_text">
                   Crystal-clear waters, hidden coves, and direct connections to Hvar, Dubrovnik and the Dalmatian archipelago.
               </p>
-
-            {{-- ★ HIGHLIGHTS PROPOSAL — revert: remove this <ul> block + restore height to 520px --}}
-            <ul class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-2">
-              @foreach([
-                'Private boat excursions (Badija - Vrnik - Proizd - Lastovo Archipelago)',
-                'Swimming & snorkeling',
-                'Sunset cruises',
-                'Seaside lunches',
-                'Tailored private charters',
-              ] as $h)
-              <li class="flex items-start gap-2">
-                <span class="shrink-0 rounded-full" style="width:4px;height:4px;margin-top:0.4em;background:var(--patina-light);"></span>
-                <span class="text-[10px] tracking-wider uppercase font-light leading-snug" style="color:var(--stone);opacity:0.85;">{{ $h }}</span>
-              </li>
-              @endforeach
-            </ul>
-            {{-- ★ END HIGHLIGHTS PROPOSAL --}}
-
           </div>
           
       </div>

@@ -18,32 +18,45 @@
   <div>
     <div class="footer-col-title" data-i18n="footer_col1">The Collection</div>
     <ul class="footer-links">
-      <li><a href="#" data-i18n="fp1">The Gothic Palace</a></li>
-      <li><a href="#" data-i18n="fp2">The Noble Duplex (14th Century)</a></li>
-      <li><a href="#" data-i18n="fp3">Casa Rinascimentale</a></li>
-      <li><a href="#">KPK House</a></li>
+      <li><a href="/properties/ca-serenissima" data-i18n="fp1">Ca Serenissima</a></li>
+      <li><a href="/properties/palazzo-veneto" data-i18n="fp2">Palazzo Veneto</a></li>
+      <li><a href="/properties/palazzino-nobile" data-i18n="fp3"><Pic></Pic>Palazzino Nobile</a></li>
+      <li><a href="/properties/dimora-marina">Dimora Marina</a></li>
     </ul>
   </div>
   <div>
     <div class="footer-col-title" data-i18n="footer_col2">Experiences</div>
     <ul class="footer-links">
-      <li><a href="#" data-i18n="fe1">Weddings & Ceremonies</a></li>
+      {{-- <li><a href="#weddings" data-i18n="fe1">Weddings & Ceremonies</a></li> --}}
+      <li>
+        <a href="{{ request()->is('/') ? '#weddings' : url('/#weddings') }}" 
+           data-i18n="fe1">Weddings & Ceremonies</a>
+      </li>
       <li><a href="#" data-i18n="fe2">Private Events</a></li>
       <li><a href="#" data-i18n="fe3">Long-term Stays</a></li>
-      <li><a href="#" data-i18n="fe4">Korčula Island</a></li>
+      {{-- <li><a href="#" data-i18n="fe4">Korčula Island</a></li> --}}
+      <li>
+        <a href="{{ request()->is('/') ? '#island' : url('/#island') }}" 
+           data-i18n="fe4">Korčula Island</a>
+      </li>
     </ul>
   </div>
   <div>
     <div class="footer-col-title">vonGriesheim</div>
     <ul class="footer-links">
-      <li><a href="#" data-i18n="fv1">About Us</a></li>
-      <li><a href="#">EZY LIVIN</a></li>
-      <li><a href="#" data-i18n="fv3">Contact</a></li>
+      <li><a href="{{ route('about') }}"  data-i18n="fv1">About Us</a></li>
+      {{-- <li><a href="#">EZY LIVIN</a></li> --}}
+      {{-- <li><a href="#contact" data-i18n="fv3">Contact</a></li> --}}
+      <li>
+        <a href="{{ request()->is('/') ? '#contact' : url('/#contact') }}" 
+           data-i18n="fv3">Contact</a>
+      </li>
       <li><a href="{{ route('privacy') }}" data-i18n="fv4">Privacy</a></li>
+      <li><a href="{{ route('terms') }}" data-i18n="fv4">Terms</a></li>
     </ul>
   </div>
   <div class="footer-bottom">
-    <span data-i18n="footer_copy">© 2026 vonGriesheim. All rights reserved.</span>
+    <span data-i18n="footer_copy">© 2026 TCG unique properties d.o.o. All rights reserved.</span>
     <span style="color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;font-size:0.52rem;">Case dei Nobili · Korčula · Croatia</span>
   </div>
   <button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">

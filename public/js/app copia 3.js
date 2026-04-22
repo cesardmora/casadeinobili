@@ -259,11 +259,9 @@ document.addEventListener("DOMContentLoaded", function () {
       stat_centuries: "Centuries",
       stat_island: "Island",
       wed_badge: "Private Access",
-      wed_title: "Special Opportunities",
+      wed_title: "Weddings at Case dei Nobili",
       wed_subtitle: "Exclusive to wedding planners and luxury agencies",
       wed_f1_title: "Unique Spaces",
-      wed_text:
-        "Beyond individual stays, the Case dei Nobili Collection can also be booked in combination, making it ideal for destination weddings, family gatherings, or group celebrations. With a total of 7 bedrooms across three historic residences – the Gothic House, the Historic Apartment, and the Noble Renaissance House – guests can enjoy privacy while celebrating together in the heart of Korčula’s Old Town. Early booking is recommended to secure all properties simultaneously.<br><br> Korčula hosts the internationally renowned Korkyra Baroque Festival, held during the first two weeks of September. Guests staying in the Case dei Nobili Collection can enjoy world-class concerts and performances in historic venues just steps from their residence.",
       wed_f1_text:
         "Medieval courtyards, terraces overlooking the Adriatic and historic halls for intimate celebrations or exclusive events of up to 80 guests.",
       wed_f2_title: "Full Accommodation",
@@ -275,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
       wed_cta_note:
         "Request access to our exclusive professional dossier. Response within 48 hours.",
       wed_cta: "Request Dossier",
-      isl_eyebrow: " Concierge & Experiences",
+      isl_eyebrow: "The Setting",
       isl_title:
         'Korčula — <em style="color: var(--patina-light);">the island<br>that time refined</em>',
       isl1_title: "History & Culture",
@@ -289,58 +287,58 @@ document.addEventListener("DOMContentLoaded", function () {
         "To experience Korčula properly, the sea is essential. Our private motorboat “iziPizi” offers an elegant and relaxed way to explore nearby islands, hidden coves and crystal-clear bays. With space for up to eight people, it is perfectly suited for day trips to nearby islands, swimming in hidden bays, visiting seaside restaurants or enjoying a sunset cruise along the Adriatic coast.",
       footer_subscribe: "Subscribe",
     },
-    // de: {
-    //   nav_collection: "Kollektion",
-    //   nav_about: "Über uns",
-    //   nav_weddings: "Hochzeiten",
-    //   nav_island: "Korčula",
-    //   nav_contact: "Kontakt",
-    //   hero_location: "Korčula, Kroatien",
-    //   hero_title_1: "Eine Sammlung von",
-    //   hero_title_2: "fünf Jahrhunderten",
-    //   hero_subtitle:
-    //     "Vier historische Residenzen auf der Insel Korčula. Jede ein bewohnbares Kapitel der dalmatinischen Geschichte.",
-    //   hero_cta: "Kollektion entdecken",
-    //   hero_scroll: "Entdecken",
-    //   about_eyebrow: "Unsere Philosophie",
-    //   about_title_1: "Bewahren um",
-    //   about_title_2: "zu bewohnen",
-    //   about_text1:
-    //     "Jede Restaurierung ist ein Akt der Ehrerbietung. Wir arbeiten mit lokalen Handwerkern und verwenden jahrhundertealte Techniken und Inselmaterialien, damit jedes Haus seine Seele bewahrt.",
-    //   about_text2:
-    //     "Wir schaffen keine Räume für Touristen. Wir schaffen Häuser für Reisende, die Geschichte bewohnen wollen, wenn auch nur für ein paar Tage.",
-    //   stat_properties: "Objekte",
-    //   stat_centuries: "Jahrhunderte",
-    //   stat_island: "Insel",
-    //   wed_badge: "Privater Zugang",
-    //   wed_title: "Hochzeiten bei Case dei Nobili",
-    //   wed_subtitle: "Exklusiv für Wedding Planner und Luxusagenturen",
-    //   wed_f1_title: "Einzigartige Räume",
-    //   wed_f1_text:
-    //     "Mittelalterliche Innenhöfe, Terrassen mit Blick auf die Adria und historische Säle für intime Feiern oder exklusive Events mit bis zu 80 Gästen.",
-    //   wed_f2_title: "Vollständige Unterkunft",
-    //   wed_f2_text:
-    //     "Unterkunft für die Hochzeitsgesellschaft in unseren historischen Anwesen. Jedes Zimmer erzählt eine Geschichte, jeder Sonnenaufgang ein Versprechen.",
-    //   wed_f3_title: "Partnernetzwerk",
-    //   wed_f3_text:
-    //     "Zugang zu unserem kuratierten Netzwerk lokaler Anbieter: Privatköche, Floristen, Fotografen und Musiker, die jeden Winkel unserer Häuser kennen.",
-    //   wed_cta_note:
-    //     "Fordern Sie Zugang zu unserem exklusiven Profidossier an. Antwort innerhalb von 48 Stunden.",
-    //   wed_cta: "Dossier anfordern",
-    //   isl_eyebrow: "Der Ort",
-    //   isl_title:
-    //     'Korčula — <em style="color: var(--patina-light);">die Insel,<br>die die Zeit verfeinerte</em>',
-    //   isl1_title: "Geschichte & Erbe",
-    //   isl1_text:
-    //     "Geburtsort Marco Polos. Jahrhunderte venezianischer, byzantinischer und dalmatinischer Kultur in jeden Stein gemeißelt.",
-    //   isl2_title: "Küche & Wein",
-    //   isl2_text:
-    //     "Pošip-Weißwein, Grk, frischer Fisch. Korčula ist eines der besten Genussziele Kroatiens.",
-    //   isl3_title: "Segeln & das Meer",
-    //   isl3_text:
-    //     "Kristallklares Wasser, versteckte Buchten und direkte Verbindungen nach Hvar, Dubrovnik und dem dalmatinischen Archipel.",
-    //   footer_subscribe: "Abonnieren",
-    // },
+    de: {
+      nav_collection: "Kollektion",
+      nav_about: "Über uns",
+      nav_weddings: "Hochzeiten",
+      nav_island: "Korčula",
+      nav_contact: "Kontakt",
+      hero_location: "Korčula, Kroatien",
+      hero_title_1: "Eine Sammlung von",
+      hero_title_2: "fünf Jahrhunderten",
+      hero_subtitle:
+        "Vier historische Residenzen auf der Insel Korčula. Jede ein bewohnbares Kapitel der dalmatinischen Geschichte.",
+      hero_cta: "Kollektion entdecken",
+      hero_scroll: "Entdecken",
+      about_eyebrow: "Unsere Philosophie",
+      about_title_1: "Bewahren um",
+      about_title_2: "zu bewohnen",
+      about_text1:
+        "Jede Restaurierung ist ein Akt der Ehrerbietung. Wir arbeiten mit lokalen Handwerkern und verwenden jahrhundertealte Techniken und Inselmaterialien, damit jedes Haus seine Seele bewahrt.",
+      about_text2:
+        "Wir schaffen keine Räume für Touristen. Wir schaffen Häuser für Reisende, die Geschichte bewohnen wollen, wenn auch nur für ein paar Tage.",
+      stat_properties: "Objekte",
+      stat_centuries: "Jahrhunderte",
+      stat_island: "Insel",
+      wed_badge: "Privater Zugang",
+      wed_title: "Hochzeiten bei Case dei Nobili",
+      wed_subtitle: "Exklusiv für Wedding Planner und Luxusagenturen",
+      wed_f1_title: "Einzigartige Räume",
+      wed_f1_text:
+        "Mittelalterliche Innenhöfe, Terrassen mit Blick auf die Adria und historische Säle für intime Feiern oder exklusive Events mit bis zu 80 Gästen.",
+      wed_f2_title: "Vollständige Unterkunft",
+      wed_f2_text:
+        "Unterkunft für die Hochzeitsgesellschaft in unseren historischen Anwesen. Jedes Zimmer erzählt eine Geschichte, jeder Sonnenaufgang ein Versprechen.",
+      wed_f3_title: "Partnernetzwerk",
+      wed_f3_text:
+        "Zugang zu unserem kuratierten Netzwerk lokaler Anbieter: Privatköche, Floristen, Fotografen und Musiker, die jeden Winkel unserer Häuser kennen.",
+      wed_cta_note:
+        "Fordern Sie Zugang zu unserem exklusiven Profidossier an. Antwort innerhalb von 48 Stunden.",
+      wed_cta: "Dossier anfordern",
+      isl_eyebrow: "Der Ort",
+      isl_title:
+        'Korčula — <em style="color: var(--patina-light);">die Insel,<br>die die Zeit verfeinerte</em>',
+      isl1_title: "Geschichte & Erbe",
+      isl1_text:
+        "Geburtsort Marco Polos. Jahrhunderte venezianischer, byzantinischer und dalmatinischer Kultur in jeden Stein gemeißelt.",
+      isl2_title: "Küche & Wein",
+      isl2_text:
+        "Pošip-Weißwein, Grk, frischer Fisch. Korčula ist eines der besten Genussziele Kroatiens.",
+      isl3_title: "Segeln & das Meer",
+      isl3_text:
+        "Kristallklares Wasser, versteckte Buchten und direkte Verbindungen nach Hvar, Dubrovnik und dem dalmatinischen Archipel.",
+      footer_subscribe: "Abonnieren",
+    },
   };
 
   window.setLang = function (lang) {

@@ -93,10 +93,24 @@
               {!! Str::markdown($property->long_description ?? '') !!}
             </div>
           @endif
-          <a class="airbnb-banner" href="https://www.airbnb.de/rooms/1138104029716036612" target="_blank">
+          {{-- <a class="airbnb-banner" href="https://www.airbnb.de/rooms/1138104029716036612" target="_blank">
             <div class="airbnb-dot"></div>
             Currently bookable on Airbnb — The XIV Century Duplex
-          </a>
+          </a> --}}
+          <div class="reveal reveal-delay-3">
+            <a href="{{ $property->airbnb_url }}" target="_blank" rel="noopener"
+              class="airbnb-banner inline-flex items-center gap-3 mb-10">
+              <div class="airbnb-dot"></div>
+              <span class="text-sm font-light" style="color: var(--stone);"
+                    data-i18n="intro_airbnb">
+                Now available on Airbnb — {{ $property->name }}
+              </span>
+            </a>
+            <a href="https://wa.me/385996551938?text=Hola,%20me%20interesa%20consultar%20disponibilidad%20para%20fechas%20XXX" 
+              class="btn-editorial">
+              Consultar disponibilidad → WhatsApp
+            </a>
+          </div>
         </div>
 
         {{-- Amenities --}}

@@ -875,7 +875,7 @@ body {
 
 /* =====================================================
 /* Fix — forzar visibilidad de imagen hero */
-.hero-section img {
+/* .hero-section img {
   display: block !important;
   position: absolute !important;
   inset: 0 !important;
@@ -884,6 +884,44 @@ body {
   object-fit: cover !important;
   opacity: 0.45 !important;
   z-index: 1 !important;
+} */
+
+/* =====================================================
+FIX IMÁGENES HERO — Separar fondo de contenido
+===================================================== */
+
+/* 1. IMAGEN DE FONDO (Solo esta lleva opacidad baja) */
+.hero-img-desktop,
+.hero-img-mobile {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  opacity: 0.45 !important; /* ← Opacidad SOLO para el fondo */
+  z-index: 1 !important;
+  display: block !important;
+}
+
+/* 2. LOGO SVG (Forzar visibilidad total) */
+/* Esto protege tu logo SVG de la opacidad del fondo */
+.hero-section .max-w-12xl img,
+.hero-section .relative img {
+  opacity: 1 !important;       /* ← Logo siempre visible al 100% */
+  position: relative;
+  z-index: 10 !important;
+  transform: none !important;
+}
+
+/* Responsividad para ocultar/mostrar versiones móvil/desktop */
+@media (max-width: 767px) {
+  .hero-img-desktop { display: none !important; }
+  .hero-img-mobile { display: block !important; }
+}
+
+@media (min-width: 768px) {
+  .hero-img-desktop { display: block !important; }
+  .hero-img-mobile { display: none !important; }
 }
 
 /* En desktop ocultar la versión móvil */
@@ -957,7 +995,7 @@ body {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  opacity: 0.5 !important;
+  opacity: 0.65 !important;
   display: block !important;
 }
 .hero-overlay {
@@ -1487,7 +1525,7 @@ footer[id] {
 
 /* Escudo/Logo */
 .nav-logo-shield {
-  height: 32px;           /* Altura pequeña para que no sobresalga */
+  height: 50px;           /* Altura pequeña para que no sobresalga */
   width: auto;            /* Mantiene proporción */
   flex-shrink: 0;         /* Evita que se encoja */
   object-fit: contain;    /* Ajusta sin deformar */
@@ -1565,7 +1603,7 @@ footer[id] {
   
   /* Shield/Logo Image */
   .nav-logo-shield {
-    height: 32px;
+    height: 50px;
     width: auto;
     flex-shrink: 0;
     object-fit: contain;
@@ -1744,3 +1782,9 @@ footer[id] {
   }
 
   /* En móvil: */
+/* Compensa la altura del nav fijo al hacer scroll a anclas */
+#contact,
+section#contact,
+footer#contact {
+    scroll-margin-top: 110px; /* Ajusta si tu nav mide más o menos */
+}

@@ -1,0 +1,62 @@
+# Git
+.gitignore
+*.gitkeep
+
+# Environment
+.env
+.env.backup
+.env.production
+
+# Dependencies
+/vendor
+/node_modules
+
+# Build artifacts
+/public/build
+/public/hot
+/public/storage
+
+# Laravel / PHP
+/.phpunit.cache
+/.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+
+# Database
+# database/database.sqlite
+
+# Storage (keep .gitkeep only)
+/storage/*
+!/storage/.gitkeep
+!/storage/framework/.gitkeep
+!/storage/framework/cache/.gitkeep
+!/storage/framework/sessions/.gitkeep
+!/storage/framework/views/.gitkeep
+!/storage/logs/.gitkeep
+/storage/logs/*.log
+npm-debug.log
+yarn-error.log
+
+# IDE
+.fleet
+/.idea
+/.vscode
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Tailwind source (keep compiled output in repo for production)
+/resources/css/app.css
+
+# Backup / copy files
+*.copia*
+*.bak
+*.copy
+*.backup
+
+# Misc project files
+/.qwen/
+X_linux/
+test.php
