@@ -129,7 +129,8 @@
       required
       class="w-full px-6 py-4 text-sm font-light border focus:outline-none resize-none @error('message') border-red-400 @enderror"
       style="background: transparent; border-color: rgba(184,149,107,0.3); color: var(--stone-light);"
-    >{{ old('message') }}</textarea>
+      {{-- We are interested in renting the property {{ $property->name }}, ...  --}}
+      >{{ old('message') }}</textarea>
     @error('message')
       <p class="text-xs mt-1" style="color: var(--patina-light);">{{ $message }}</p>
     @enderror

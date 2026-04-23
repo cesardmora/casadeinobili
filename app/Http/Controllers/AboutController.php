@@ -31,20 +31,20 @@ class AboutController extends Controller
 
         $values = [
             [
-                'title' => 'Reverencia por el pasado',
-                'text'  => 'Cada restauración es un acto de respeto. Usamos técnicas centenarias y materiales de la isla para preservar el alma de cada casa.',
+                'title' => 'Reverence for the Past',
+                'text' => 'Every restoration is an act of respect. We use centuries-old techniques and materials from the island to preserve the soul of each house.',
             ],
             [
-                'title' => 'Exclusividad sin ostentación',
-                'text'  => 'No creamos hoteles. Creamos hogares privados donde la historia convive con el confort contemporáneo en perfecta armonía.',
+                'title' => 'Exclusivity Without Ostentation',
+                'text' => 'We dont create hotels. We create private homes where history coexists with contemporary comfort in perfect harmony.',
             ],
             [
-                'title' => 'Compromiso con la isla',
-                'text'  => 'Trabajamos exclusivamente con artesanos, proveedores y colaboradores locales de Korčula. La comunidad es parte de nuestra colección.',
+                'title' => 'Commitment to the Island',
+                'text' => 'We work exclusively with local artisans, suppliers, and collaborators from Korčula. The community is part of our collection.',
             ],
             [
-                'title' => 'Atención sin igual',
-                'text'  => 'Cada huésped recibe atención personalizada antes, durante y después de su estancia. Estamos disponibles en todo momento.',
+                'title' => 'Unparalleled Service',
+                'text' => 'Every guest receives personalized attention before, during, and after their stay. We are available at all times.',
             ],
         ];
 

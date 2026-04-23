@@ -12,13 +12,13 @@
   {{-- Desktop links — center --}}
   <ul class="nav-links-desktop">
     @if(request()->routeIs('home'))
-      <li><a href="#collection" data-i18n="nav_collection">The Collection</a></li>
+      <li><a href="#collection" data-i18n="nav_collection">Collection</a></li>
       <li><a href="{{ route('about') }}" data-i18n="nav_about">About</a></li>
       <li><a href="#weddings"     data-i18n="nav_weddings">Weddings</a></li>
       <li><a href="#island"      data-i18n="nav_island">Korčula</a></li>
       <li><a href="#contact"  data-i18n="nav_contact">Contact</a></li>
     @else
-      <li><a href="{{ route('home') }}#collection" data-i18n="nav_collection">The Collection</a></li>
+      <li><a href="{{ route('home') }}#collection" data-i18n="nav_collection">Collection</a></li>
       <li><a href="{{ route('about') }}" data-i18n="nav_about">About</a></li>
       <li><a href="{{ route('home') }}#weddings"     data-i18n="nav_weddings">Weddings</a></li>
       <li><a href="{{ route('home') }}#island"      data-i18n="nav_island">Korčula</a></li>

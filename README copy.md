@@ -54,6 +54,8 @@ Solución:
 
 ## 🚀 Quick Start
 
+Nobili2026Secure!
+
 ### 1. Clone the repository
 
 ```bash

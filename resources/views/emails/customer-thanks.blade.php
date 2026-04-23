@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>New query received | Case dei Nobili</title>
+  <title>Thank you for your enquiry | Case dei Nobili</title>
   <style>
     body { font-family: Georgia, serif; background: #F5F2ED; color: #1A1917; margin: 0; padding: 40px 20px; }
     .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 48px; }
@@ -13,26 +13,20 @@
     .footer { margin-top: 48px; font-size: 12px; color: #9B9690; }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="header">
-      <h1 style="font-weight: 300; font-size: 28px; margin: 0;">Case dei Nobili</h1>
-      <p class="label" style="margin-top: 8px;">New query received</p>
+      <h1 style="font-weight: 300; font-size: 28px; margin: 0;">Thank you for your enquiry</h1>
+      <p class="value">Dear <strong>{{ $inquiry->name }}</strong>,</p>
+      <p class="value">We have received your request regarding our properties at <strong>Case dei Nobili</strong>.</p>
     </div>
+    
+    {{-- <p class="label">Email</p>
+    <p class="value">{{ $inquiry->email }}</a></p> --}}
 
-    <p class="label">Name</p>
-    <p class="value">{{ $inquiry->name }}</p>
-
-    <p class="label">Email</p>
-    <p class="value"><a href="mailto:{{ $inquiry->email }}" style="color: #B8956B;">{{ $inquiry->email }}</a></p>
-
-    @if($inquiry->phone)
-      <p class="label">Phone</p>
-      <p class="value">{{ $inquiry->phone }}</p>
-    @endif
-
-    <p class="label">Type of query</p>
-    <p class="value">{{ $inquiry->inquiry_type_label }}</p>
+    {{-- <p class="label">Your Message:</p>
+    <p class="value">{{ $inquiry->message }}</p> --}}
 
     @if($inquiry->property)
       <p class="label">Property of interest</p>
@@ -48,15 +42,20 @@
       </p>
     @endif
 
-    <p class="label">Message</p>
+    <p class="label">Your message</p>
     <div class="message-box">
       <p style="white-space: pre-line; margin: 0; line-height: 1.7;">{{ $inquiry->message }}</p>
+      <p>Our team will review your details and contact you within the next 48 hours.</p>
     </div>
 
     <div class="footer">
-      <p>IP: {{ $inquiry->ip_address }} · {{ $inquiry->created_at->format('d/m/Y H:i') }}</p>
-      <p>Case dei Nobili — Korčula, Croacia</p>
+      {{-- <p>IP: {{ $inquiry->ip_address }} · {{ $inquiry->created_at->format('d/m/Y H:i') }}</p> --}}
+      <p>Case dei Nobili · Korčula · Croatia · 
+        <a href="https://casedeinobili.com" style="color: #b8956b; text-decoration: none;">casedeinobili.com</a>
+      </p>
     </div>
   </div>
 </body>
 </html>
+
+

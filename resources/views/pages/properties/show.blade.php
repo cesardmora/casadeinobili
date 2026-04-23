@@ -108,7 +108,7 @@
             </a>
             <a href="https://wa.me/385996551938?text=Hola,%20me%20interesa%20consultar%20disponibilidad%20para%20fechas%20XXX" 
               class="btn-editorial">
-              Consultar disponibilidad → WhatsApp
+              Check availability → WhatsApp
             </a>
           </div>
         </div>

@@ -3,7 +3,7 @@
 
      @if(request()->routeIs('home'))
        <a href="#collection" class="font-display text-3xl" style="color: #f0e8d8;"
-          data-i18n="nav_collection">The Collection</a>
+          data-i18n="nav_collection">Collection</a>
 
        <a href="{{ route('about') }}" class="font-display text-3xl" style="color: #f0e8d8;"
           data-i18n="nav_about">About</a>
@@ -18,7 +18,7 @@
           data-i18n="nav_contact">Contact</a>
      @else
        <a href="{{ route('home') }}#collection" class="font-display text-3xl" style="color: #f0e8d8;"
-          data-i18n="nav_collection">The Collection</a>
+          data-i18n="nav_collection">Collection</a>
 
        <a href="{{ route('about') }}" class="font-display text-3xl" style="color: #f0e8d8;"
           data-i18n="nav_about">About</a>

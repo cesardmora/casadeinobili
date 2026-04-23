@@ -56,10 +56,10 @@ class ContactInquiry extends Model
     public function getInquiryTypeLabelAttribute(): string
     {
         return match($this->inquiry_type) {
-            'rental'  => 'Alquiler',
-            'wedding' => 'Boda',
-            'dossier' => 'Dossier Profesional',
-            default   => 'Otro',
+            'rental' => 'Rental',
+            'wedding' => 'Wedding',
+            'dossier' => 'Professional Dossier',
+            default => 'Other',
         };
     }
 }
