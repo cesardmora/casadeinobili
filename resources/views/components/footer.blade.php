@@ -27,14 +27,12 @@
   <div>
     <div class="footer-col-title" data-i18n="footer_col2">Experiences</div>
     <ul class="footer-links">
-      {{-- <li><a href="#weddings" data-i18n="fe1">Weddings & Ceremonies</a></li> --}}
       <li>
         <a href="{{ request()->is('/') ? '#weddings' : url('/#weddings') }}" 
            data-i18n="fe1">Weddings & Ceremonies</a>
       </li>
-      <li><a href="#" data-i18n="fe2">Private Events</a></li>
-      <li><a href="#" data-i18n="fe3">Long-term Stays</a></li>
-      {{-- <li><a href="#" data-i18n="fe4">Korčula Island</a></li> --}}
+      <li><a href="{{ route('seo.page.weddings') }}">Destination Weddings in Korčula</a></li>
+      <li><a href="{{ route('seo.page.luxury') }}">Luxury Stays in Korčula</a></li>
       <li>
         <a href="{{ request()->is('/') ? '#island' : url('/#island') }}" 
            data-i18n="fe4">Korčula Island</a>
@@ -45,8 +43,7 @@
     <div class="footer-col-title">vonGriesheim</div>
     <ul class="footer-links">
       <li><a href="{{ route('about') }}"  data-i18n="fv1">About Us</a></li>
-      {{-- <li><a href="#">EZY LIVIN</a></li> --}}
-      {{-- <li><a href="#contact" data-i18n="fv3">Contact</a></li> --}}
+      <li><a href="{{ route('seo.page.historic') }}">Historic Houses in Old Town</a></li>
       <li>
         <a href="{{ request()->is('/') ? '#contact' : url('/#contact') }}" 
            data-i18n="fv3">Contact</a>
@@ -68,17 +65,3 @@
     </svg>
   </button>
 </footer>
-
-<script>
-  // Botón volver arriba
-  const backToTop = document.getElementById("backToTop");
-  if (backToTop) {
-    window.addEventListener(
-      "scroll",
-      function () {
-        backToTop.classList.toggle("visible", window.pageYOffset > 600);
-      },
-      { passive: true }
-    );
-  }
-</script>

@@ -72,11 +72,7 @@
   </script>
 
   {{-- Fonts --}}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/fonts.css') }}?v={{ filemtime(public_path('css/fonts.css')) }}">
 
   {{-- Tailwind compiled CSS --}}
   <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">

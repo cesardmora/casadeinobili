@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\SeoPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,12 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // About
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+
+// SEO landings
+Route::get('/luxury-stays-korcula', [SeoPageController::class, 'show'])->defaults('slug', 'luxury-stays-korcula')->name('seo.page.luxury');
+Route::get('/historic-houses-korcula-old-town', [SeoPageController::class, 'show'])->defaults('slug', 'historic-houses-korcula-old-town')->name('seo.page.historic');
+Route::get('/destination-weddings-korcula', [SeoPageController::class, 'show'])->defaults('slug', 'destination-weddings-korcula')->name('seo.page.weddings');
+Route::get('/sitemap.xml', [SeoPageController::class, 'sitemap'])->name('sitemap');
 
 // Properties
 Route::get('/properties', [PropertyController::class, 'index'])->name('properties.index');

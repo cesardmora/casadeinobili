@@ -94,10 +94,13 @@
                 <img 
                     src="{{ asset('images/case-dei-nobili-logo.svg') }}" 
                     alt="Case dei Nobili" 
+                    width="365"
+                    height="41"
                     class="mx-auto w-auto max-w-[80%] md:max-w-[70%] lg:max-w-[60%] h-auto"
                     style="max-height: 160px;"
                     loading="eager"
                     decoding="async"
+                    fetchpriority="high"
                 >
             </div>
         

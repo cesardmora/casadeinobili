@@ -2,6 +2,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
+  const deferNonCritical = function (callback, timeout) {
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(callback, { timeout: timeout || 1200 });
+      return;
+    }
+
+    window.setTimeout(callback, 1);
+  };
 
   // =============================================
   // Nav scroll — clase .scrolled al bajar
@@ -46,135 +54,159 @@ document.addEventListener("DOMContentLoaded", function () {
   // =============================================
   // Scroll reveal — suave y escalonado
   // =============================================
-  if (!prefersReducedMotion) {
-    const observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            setTimeout(function () {
-              entry.target.classList.add("visible");
-            }, 80);
-            observer.unobserve(entry.target);
+  deferNonCritical(function () {
+    if (!prefersReducedMotion) {
+      const observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              setTimeout(function () {
+                entry.target.classList.add("visible");
+              }, 80);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.06,
+          rootMargin: "0px 0px -20px 0px",
+        }
+      );
+
+      document.querySelectorAll(".reveal, .line-reveal").forEach(function (el) {
+        observer.observe(el);
+      });
+
+      setTimeout(function () {
+        document.querySelectorAll(".reveal, .line-reveal").forEach(function (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight) {
+            el.classList.add("visible");
           }
         });
-      },
-      {
-        threshold: 0.06,
-        rootMargin: "0px 0px -20px 0px",
-      }
-    );
-
-    document.querySelectorAll(".reveal, .line-reveal").forEach(function (el) {
-      observer.observe(el);
-    });
-
-    setTimeout(function () {
+      }, 120);
+    } else {
       document.querySelectorAll(".reveal, .line-reveal").forEach(function (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-          el.classList.add("visible");
+        el.classList.add("visible");
+      });
+    }
+
+    if (window.location.hash === "#contact") {
+      setTimeout(() => {
+        const target = document.querySelector("#contact");
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 300);
+    }
+
+    const backToTop = document.getElementById("backToTop");
+    if (backToTop) {
+      window.addEventListener(
+        "scroll",
+        function () {
+          backToTop.classList.toggle("visible", window.pageYOffset > 600);
+        },
+        { passive: true }
+      );
+    }
+
+    document.querySelectorAll("a[href]").forEach(function (anchor) {
+      anchor.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+        if (!href) return;
+
+        let hash = null;
+        if (href.startsWith("#")) {
+          hash = href;
+        } else {
+          try {
+            const url = new URL(href, window.location.href);
+            if (url.pathname === window.location.pathname && url.hash) {
+              hash = url.hash;
+            }
+          } catch (_) {}
+        }
+
+        if (!hash || hash === "#") return;
+        const target = document.querySelector(hash);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+            block: "start",
+          });
         }
       });
-    }, 120);
-  } else {
-    document.querySelectorAll(".reveal, .line-reveal").forEach(function (el) {
-      el.classList.add("visible");
     });
-  }
 
-  // Scroll suave al cargar si la URL termina en #contact
-  if (window.location.hash === "#contact") {
-    setTimeout(() => {
-      const target = document.querySelector("#contact");
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 300); // Pequeña espera para que el DOM y CSS estén listos
-  }
-
-  // =============================================
-  // Botón volver arriba
-  // =============================================
-  const backToTop = document.getElementById("backToTop");
-  if (backToTop) {
-    window.addEventListener(
-      "scroll",
-      function () {
-        backToTop.classList.toggle("visible", window.pageYOffset > 600);
-      },
-      { passive: true }
-    );
-  }
-
-  // =============================================
-  // Smooth scroll — soporta "#seccion" y "https://dominio.com#seccion"
-  // =============================================
-  document.querySelectorAll("a[href]").forEach(function (anchor) {
-    anchor.addEventListener("click", function (e) {
-      const href = this.getAttribute("href");
-      if (!href) return;
-
-      // Extraer el hash tanto de "#seccion" como de "https://...#seccion"
-      let hash = null;
-      if (href.startsWith("#")) {
-        hash = href; // ya es solo el hash
-      } else {
-        try {
-          const url = new URL(href, window.location.href);
-          // Solo actuar si es la misma página
-          if (url.pathname === window.location.pathname && url.hash) {
-            hash = url.hash;
-          }
-        } catch (_) {}
-      }
-
-      if (!hash || hash === "#") return;
-      const target = document.querySelector(hash);
-      if (target) {
+    const newsletterForm = document.getElementById("newsletterForm");
+    if (newsletterForm) {
+      newsletterForm.addEventListener("submit", async function (e) {
         e.preventDefault();
-        target.scrollIntoView({
-          behavior: prefersReducedMotion ? "auto" : "smooth",
-          block: "start",
-        });
-      }
-    });
-  });
-
-  // =============================================
-  // Newsletter AJAX
-  // =============================================
-  const newsletterForm = document.getElementById("newsletterForm");
-  if (newsletterForm) {
-    newsletterForm.addEventListener("submit", async function (e) {
-      e.preventDefault();
-      const btn = newsletterForm.querySelector('button[type="submit"]');
-      const original = btn.textContent;
-      btn.textContent = "Enviando…";
-      btn.disabled = true;
-      try {
-        const res = await fetch(newsletterForm.action, {
-          method: "POST",
-          headers: {
-            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]')
-              .content,
-            Accept: "application/json",
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams(new FormData(newsletterForm)),
-        });
-        await res.json();
-        btn.textContent = "✓ Suscrito";
-        newsletterForm.reset();
-        setTimeout(() => {
+        const btn = newsletterForm.querySelector('button[type="submit"]');
+        const original = btn.textContent;
+        btn.textContent = "Enviando…";
+        btn.disabled = true;
+        try {
+          const res = await fetch(newsletterForm.action, {
+            method: "POST",
+            headers: {
+              "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]')
+                .content,
+              Accept: "application/json",
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams(new FormData(newsletterForm)),
+          });
+          await res.json();
+          btn.textContent = "✓ Suscrito";
+          newsletterForm.reset();
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.disabled = false;
+          }, 3000);
+        } catch {
           btn.textContent = original;
           btn.disabled = false;
-        }, 3000);
-    } catch {
-        btn.textContent = original;
-        btn.disabled = false;
-      }
-    });
-  }
+        }
+      });
+    }
+
+    if ("PerformanceObserver" in window) {
+      try {
+        let lastLcp = 0;
+        const debugVitals = window.location.search.includes("debug_vitals=1");
+        const observer = new PerformanceObserver(function (entryList) {
+          const entries = entryList.getEntries();
+          const lastEntry = entries[entries.length - 1];
+          if (!lastEntry) return;
+
+          lastLcp = Math.round(lastEntry.startTime);
+          window.caseDeiNobiliVitals = window.caseDeiNobiliVitals || {};
+          window.caseDeiNobiliVitals.lcp = lastLcp;
+          window.caseDeiNobiliVitals.lcpElement =
+            lastEntry.element?.getAttribute?.("alt") ||
+            lastEntry.element?.tagName ||
+            null;
+
+          if (debugVitals) {
+            console.info("[Case dei Nobili] LCP", {
+              milliseconds: lastLcp,
+              element: window.caseDeiNobiliVitals.lcpElement,
+            });
+          }
+        });
+
+        observer.observe({ type: "largest-contentful-paint", buffered: true });
+        document.addEventListener("visibilitychange", function () {
+          if (document.visibilityState === "hidden" && lastLcp > 0) {
+            observer.disconnect();
+          }
+        });
+      } catch (_) {}
+    }
+  }, 1200);
 
   // =============================================
   // i18n — ES / EN / DE

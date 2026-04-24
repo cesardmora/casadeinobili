@@ -41,19 +41,19 @@ html {
 }
 
 body {
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-sans);
   /* background-color: var(--stone-light); */
   color: var(--ink);
   overflow-x: hidden;
 
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-sans);
   background: var(--ink);
   color: var(--parchment);
   overflow-x: hidden;
 }
 
 .font-display {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-display);
 }
 
 /* ---- Scrollbar ---- */
@@ -237,7 +237,7 @@ body {
 
 /* ---- Chapter number ---- */
 .chapter-number {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-display);
   font-size: 120px;
   font-weight: 300;
   line-height: 1;
@@ -250,7 +250,7 @@ body {
 .btn-editorial {
   position: relative;
   padding: 16px 40px;
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-sans);
   font-weight: 300;
   font-size: 13px;
   letter-spacing: 0.2em;
@@ -304,7 +304,7 @@ body {
 .btn-editorial-2 {
   position: relative;
   padding: 16px 40px;
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-sans);
   font-weight: 300;
   font-size: 13px;
   letter-spacing: 0.2em;
@@ -475,7 +475,7 @@ body {
   border-right: 1px solid rgba(200, 185, 154, 0.15);
   padding: 0.35rem 0.9rem;
   cursor: pointer;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-sans);
   transition: color 0.3s;
 }
 .lang-btn:last-child {
@@ -519,7 +519,7 @@ body {
 
 /* Logo */
 .nav-logo {
-  font-family: "Cormorant Garamond", serif !important;
+  font-family: var(--font-display) !important;
   font-size: 0.95rem !important;
   font-weight: 300 !important;
   letter-spacing: 0.25em !important;
@@ -558,7 +558,7 @@ body {
   text-decoration: none;
   opacity: 0.8;
   transition: opacity 0.3s, color 0.3s;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-sans);
 }
 .nav-links-desktop a:hover {
   opacity: 1;
@@ -614,7 +614,7 @@ body {
 }
 
 #mobileMenu a {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-display);
   font-size: 2.2rem;
   font-weight: 300;
   font-style: italic;
@@ -637,7 +637,7 @@ body {
   border: 1px solid rgba(184, 147, 58, 0.3);
   padding: 0.6rem 1.5rem;
   cursor: pointer;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-sans);
   transition: all 0.3s;
 }
 #closeMobileMenu:hover {
@@ -727,7 +727,7 @@ body {
 /* Logo — siempre blanco/crema */
 #mainNav .nav-logo,
 .nav-logo {
-  font-family: "Cormorant Garamond", serif !important;
+  font-family: var(--font-display) !important;
   font-size: 1.5rem !important;
   font-weight: 300 !important;
   letter-spacing: 0.22em !important;
@@ -815,7 +815,7 @@ body {
 }
 
 #mobileMenu a {
-  font-family: "Cormorant Garamond", serif !important;
+  font-family: var(--font-display) !important;
   font-size: 2.2rem !important;
   font-weight: 300 !important;
   font-style: italic !important;
@@ -1046,7 +1046,7 @@ FIX IMÁGENES HERO — Separar fondo de contenido
 
 /* Logo estilo imagen 2 */
 .nav-logo {
-  font-family: "Cormorant Garamond", serif !important;
+  font-family: var(--font-display) !important;
   font-size: 0.9rem !important;
   font-weight: 300 !important;
   letter-spacing: 0.05em !important;
@@ -1106,7 +1106,7 @@ FIX IMÁGENES HERO — Separar fondo de contenido
   border-right: 1px solid rgba(240, 232, 216, 0.2) !important;
   padding: 0.2rem 0.7rem !important;
   cursor: pointer !important;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: var(--font-sans) !important;
   transition: color 0.3s !important;
 }
 .nav-lang-inline .lang-btn:last-child {
@@ -1186,7 +1186,7 @@ FIX IMÁGENES HERO — Separar fondo de contenido
   border-right: 1px solid rgba(240, 232, 216, 0.2) !important;
   padding: 0.2rem 0.7rem !important;
   cursor: pointer !important;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: var(--font-sans) !important;
   transition: color 0.3s !important;
 }
 .nav-lang-inline .lang-btn:last-child {

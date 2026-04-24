@@ -4,6 +4,8 @@
     {{-- Escudo/Logo --}}
     <img src="{{ asset('images/vonGriesheim-shield.svg') }}" 
          alt="vonGriesheim" 
+         width="203"
+         height="202"
          class="nav-logo-shield"
          loading="eager"
          decoding="async">
@@ -43,4 +45,3 @@
   </div>
 
 </nav>
-

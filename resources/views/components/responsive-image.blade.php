@@ -14,6 +14,8 @@
     $rawSrc = trim((string) $src);
     $resolvedSrc = $rawSrc;
     $srcset = null;
+    $intrinsicWidth = null;
+    $intrinsicHeight = null;
 
     if ($rawSrc !== '') {
         $isAbsolute = preg_match('#^https?://#', $rawSrc) === 1;
@@ -45,7 +47,16 @@
                 $imageSize = @getimagesize($sourcePath);
 
                 if (is_array($imageSize) && ! empty($imageSize[0])) {
+                    $intrinsicWidth = (int) $imageSize[0];
+                    $intrinsicHeight = ! empty($imageSize[1]) ? (int) $imageSize[1] : null;
                     $srcsetParts[] = asset($path) . ' ' . (int) $imageSize[0] . 'w';
+                } elseif (str_ends_with(strtolower($sourcePath), '.svg')) {
+                    $svg = @file_get_contents($sourcePath);
+
+                    if (is_string($svg) && preg_match('/viewBox="[\d.\s-]+ ([\d.]+) ([\d.]+)"/i', $svg, $matches)) {
+                        $intrinsicWidth = (int) round((float) $matches[1]);
+                        $intrinsicHeight = (int) round((float) $matches[2]);
+                    }
                 }
             }
 
@@ -86,6 +97,8 @@
     src="{{ $resolvedSrc }}"
     @if($srcset) srcset="{{ $srcset }}" sizes="{{ $sizes }}" @endif
     alt="{{ $alt }}"
+    @if($intrinsicWidth) width="{{ $intrinsicWidth }}" @endif
+    @if($intrinsicHeight) height="{{ $intrinsicHeight }}" @endif
     class="{{ $class }}"
     loading="{{ $loading }}"
     decoding="{{ $decoding }}"
