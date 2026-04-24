@@ -50,11 +50,15 @@
         >
     </div> --}}
 
-    <img
-      src="{{ asset('images/Korcula_birds_eye_2.webp') }}"
+    <x-responsive-image
+      src="images/Korcula_birds_eye_2.webp"
       alt="Case dei Nobili"
       class="hero-img-desktop"
-    >
+      sizes="100vw"
+      :widths="[768, 1280, 1600, 2000]"
+      loading="eager"
+      fetchpriority="high"
+    />
 
     <div class="relative z-10 h-full flex flex-col justify-center px-6 lg:px-12">
     {{-- <div class="relative z-10 h-full flex flex-col justify-start items-center px-6 lg:px-12 mt-16 pt-50"> --}}
@@ -92,6 +96,8 @@
                     alt="Case dei Nobili" 
                     class="mx-auto w-auto max-w-[80%] md:max-w-[70%] lg:max-w-[60%] h-auto"
                     style="max-height: 160px;"
+                    loading="eager"
+                    decoding="async"
                 >
             </div>
         
@@ -239,13 +245,13 @@
         {{-- Left: image --}}
         <div class="reveal order-2 lg:order-1">
           <div class="relative aspect-[4/5] overflow-hidden group cursor-pointer">
-            <img
-              src="{{ asset('images/korcula_CityEntry.webp') }}"
+            <x-responsive-image
+              src="images/korcula_CityEntry.webp"
               alt="Korčula old town"
               class="w-full h-full object-cover zoom-img"
-             
-              loading="lazy"
-            >
+              sizes="(min-width: 1024px) 42vw, 100vw"
+              :widths="[480, 768, 1200, 1600]"
+            />
             <div class="absolute bottom-0 left-0 right-0 p-8"
                 style="background: linear-gradient(to top, rgba(13,31,40,0.8), transparent);">
               <p class="text-xs tracking-widest uppercase" style="color: var(--patina-light);">Korčula, Croatia</p>
@@ -471,13 +477,13 @@
   
             {{-- Image 1 — tall, spans 2 rows --}}
             <div class="relative aspect-[4/5] overflow-hidden group cursor-pointer">
-              <img
-                src="{{ asset('images/Sant_Markus_Sq.webp') }}"
+              <x-responsive-image
+                src="images/Sant_Markus_Sq.webp"
                 alt="Wedding ceremony"
                 class="w-full h-full object-cover zoom-img"
-               
-                loading="lazy"
-              >
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                :widths="[480, 768, 1200, 1600]"
+              />
               <div class="absolute bottom-0 left-0 right-0 p-6"
                    style="background: linear-gradient(to top, rgba(13,31,40,0.8), transparent);">
                 <p class="text-xs tracking-widest uppercase" style="color: var(--patina-light);">The Ceremony</p>
@@ -727,9 +733,13 @@
         <div class="relative overflow-hidden group cursor-pointer" style="height: 720px;"> {{-- ★ HIGHLIGHTS PROPOSAL: was 520px --}}
     
           {{-- Imagen de fondo con zoom --}}
-          <div class="absolute inset-0 zoom-bg" 
-               style="--bg-image: url('{{ asset('images/korcula_02.webp') }}');">
-          </div>
+          <x-responsive-image
+            src="images/korcula_02.webp"
+            alt="Historic streets of Korčula"
+            class="absolute inset-0 w-full h-full object-cover zoom-bg"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            :widths="[480, 768, 1200, 1600]"
+          />
           
           {{-- Overlay oscuro --}}
           <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-500"></div>
@@ -787,9 +797,13 @@
         <div class="relative overflow-hidden group cursor-pointer" style="height: 720px;"> {{-- ★ HIGHLIGHTS PROPOSAL: was 520px --}}
     
           {{-- Imagen de fondo con zoom --}}
-          <div class="absolute inset-0 zoom-bg" 
-               style="--bg-image: url('{{ asset('images/Korcula_night.webp') }}');">
-          </div>
+          <x-responsive-image
+            src="images/Korcula_night.webp"
+            alt="Korčula dining and wine scene at night"
+            class="absolute inset-0 w-full h-full object-cover zoom-bg"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            :widths="[480, 768, 1200, 1600]"
+          />
           
           {{-- Overlay oscuro --}}
           <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-500"></div>
@@ -831,9 +845,13 @@
         <div class="relative overflow-hidden group cursor-pointer" style="height: 720px;"> {{-- ★ HIGHLIGHTS PROPOSAL: was 520px --}}
     
           {{-- Imagen de fondo con zoom --}}
-          <div class="absolute inset-0 zoom-bg" 
-               style="--bg-image: url('{{ asset('images/Badija.webp') }}');">
-          </div>
+          <x-responsive-image
+            src="images/Badija.webp"
+            alt="Sailing around Korčula and nearby islands"
+            class="absolute inset-0 w-full h-full object-cover zoom-bg"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            :widths="[480, 768, 1200, 1600]"
+          />
           
           {{-- Overlay oscuro --}}
           <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-500"></div>

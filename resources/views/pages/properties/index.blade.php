@@ -19,6 +19,31 @@
 </script>
 @endpush
 
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Case dei Nobili Properties",
+  "url": "{{ url()->current() }}",
+  "description": "Explore the curated collection of historic luxury residences in Korčula.",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      @foreach($properties as $property)
+      {
+        "@type": "ListItem",
+        "position": {{ $loop->iteration }},
+        "url": "{{ route('properties.show', $property) }}",
+        "name": "{{ $property->name }}"
+      }@if(! $loop->last),@endif
+      @endforeach
+    ]
+  }
+}
+</script>
+@endpush
+
 @section('content')
 
   {{-- Hero --}}

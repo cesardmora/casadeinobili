@@ -5,7 +5,7 @@
 @section('canonical', url()->current())
 @section('og_type', 'article')
 @if($property->image_url)
-@section('og_image', $property->image_url)
+@section('og_image', str_starts_with($property->image_url, 'http') ? $property->image_url : asset($property->image_url))
 @endif
 
 @push('head')
@@ -22,7 +22,7 @@
     "addressLocality": "Korčula",
     "addressCountry": "HR"
   },
-  @if($property->image_url)"image": "{{ $property->image_url }}",@endif
+  @if($property->image_url)"image": "{{ str_starts_with($property->image_url, 'http') ? $property->image_url : asset($property->image_url) }}",@endif
   @if($property->guests)"numberOfRooms": {{ $property->bedrooms ?? 0 }},@endif
   "starRating": {
     "@type": "Rating",
@@ -38,11 +38,15 @@
   <section class="hero-section">
     <div class="hero-bg"></div>
     @if($property->image_url)
-      <img
-        src="{{ $property->image_url }}"
+      <x-responsive-image
+        :src="$property->image_url"
         alt="{{ $property->name }}"
         class="absolute inset-0 w-full h-full object-cover opacity-40"
-      >
+        sizes="100vw"
+        :widths="[768, 1280, 1600, 2000]"
+        loading="eager"
+        fetchpriority="high"
+      />
     @endif
     <div class="hero-overlay"></div>
 
@@ -138,7 +142,13 @@
       <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-2 gap-4">
         @foreach($property->gallery_images as $img)
           <div class="aspect-[4/3] overflow-hidden reveal">
-            <img src="{{ str_starts_with($img, 'http') ? $img : asset($img) }}" alt="{{ $property->name }}" class="w-full h-full object-cover property-image" loading="lazy">
+            <x-responsive-image
+              :src="$img"
+              alt="{{ $property->name }}"
+              class="w-full h-full object-cover property-image"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              :widths="[480, 768, 1200, 1600]"
+            />
           </div>
         @endforeach
       </div>

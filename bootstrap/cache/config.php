@@ -1,56 +1,4 @@
 <?php return array (
-  'hashing' => 
-  array (
-    'driver' => 'bcrypt',
-    'bcrypt' => 
-    array (
-      'rounds' => '12',
-      'verify' => true,
-    ),
-    'argon' => 
-    array (
-      'memory' => 65536,
-      'threads' => 1,
-      'time' => 4,
-      'verify' => true,
-    ),
-    'rehash_on_login' => true,
-  ),
-  'auth' => 
-  array (
-    'defaults' => 
-    array (
-      'guard' => 'web',
-      'passwords' => 'users',
-    ),
-    'guards' => 
-    array (
-      'web' => 
-      array (
-        'driver' => 'session',
-        'provider' => 'users',
-      ),
-    ),
-    'providers' => 
-    array (
-      'users' => 
-      array (
-        'driver' => 'eloquent',
-        'model' => 'App\\Models\\User',
-      ),
-    ),
-    'passwords' => 
-    array (
-      'users' => 
-      array (
-        'provider' => 'users',
-        'table' => 'password_reset_tokens',
-        'expire' => 60,
-        'throttle' => 60,
-      ),
-    ),
-    'password_timeout' => 10800,
-  ),
   'app' => 
   array (
     'name' => 'Case dei Nobili',
@@ -148,106 +96,196 @@
       'Vite' => 'Illuminate\\Support\\Facades\\Vite',
     ),
   ),
-  'mail' => 
+  'auth' => 
   array (
-    'default' => 'smtp',
-    'mailers' => 
+    'defaults' => 
     array (
-      'smtp' => 
+      'guard' => 'web',
+      'passwords' => 'users',
+    ),
+    'guards' => 
+    array (
+      'web' => 
       array (
-        'transport' => 'smtp',
-        'scheme' => NULL,
-        'url' => NULL,
-        'host' => 'smtp.gmail.com',
-        'port' => '587',
-        'username' => 'gytiming@gmail.com',
-        'password' => 'mbgygustahjqhnbp',
-        'timeout' => NULL,
-        'local_domain' => 'localhost',
+        'driver' => 'session',
+        'provider' => 'users',
       ),
-      'ses' => 
+    ),
+    'providers' => 
+    array (
+      'users' => 
       array (
-        'transport' => 'ses',
+        'driver' => 'eloquent',
+        'model' => 'App\\Models\\User',
       ),
-      'postmark' => 
+    ),
+    'passwords' => 
+    array (
+      'users' => 
       array (
-        'transport' => 'postmark',
+        'provider' => 'users',
+        'table' => 'password_reset_tokens',
+        'expire' => 60,
+        'throttle' => 60,
       ),
-      'resend' => 
+    ),
+    'password_timeout' => 10800,
+  ),
+  'broadcasting' => 
+  array (
+    'default' => 'log',
+    'connections' => 
+    array (
+      'reverb' => 
       array (
-        'transport' => 'resend',
+        'driver' => 'reverb',
+        'key' => NULL,
+        'secret' => NULL,
+        'app_id' => NULL,
+        'options' => 
+        array (
+          'host' => NULL,
+          'port' => 443,
+          'scheme' => 'https',
+          'useTLS' => true,
+        ),
+        'client_options' => 
+        array (
+        ),
       ),
-      'sendmail' => 
+      'pusher' => 
       array (
-        'transport' => 'sendmail',
-        'path' => '/usr/sbin/sendmail -bs -i',
+        'driver' => 'pusher',
+        'key' => NULL,
+        'secret' => NULL,
+        'app_id' => NULL,
+        'options' => 
+        array (
+          'cluster' => NULL,
+          'host' => 'api-mt1.pusher.com',
+          'port' => 443,
+          'scheme' => 'https',
+          'encrypted' => true,
+          'useTLS' => true,
+        ),
+        'client_options' => 
+        array (
+        ),
+      ),
+      'ably' => 
+      array (
+        'driver' => 'ably',
+        'key' => NULL,
       ),
       'log' => 
       array (
-        'transport' => 'log',
-        'channel' => NULL,
+        'driver' => 'log',
       ),
-      'array' => 
+      'null' => 
       array (
-        'transport' => 'array',
-      ),
-      'failover' => 
-      array (
-        'transport' => 'failover',
-        'mailers' => 
-        array (
-          0 => 'smtp',
-          1 => 'log',
-        ),
-      ),
-      'roundrobin' => 
-      array (
-        'transport' => 'roundrobin',
-        'mailers' => 
-        array (
-          0 => 'ses',
-          1 => 'postmark',
-        ),
-      ),
-    ),
-    'from' => 
-    array (
-      'address' => 'gytiming@gmail.com',
-      'name' => 'Case dei Nobili',
-    ),
-    'markdown' => 
-    array (
-      'theme' => 'default',
-      'paths' => 
-      array (
-        0 => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/resources/views/vendor/mail',
+        'driver' => 'null',
       ),
     ),
   ),
-  'services' => 
+  'cache' => 
   array (
-    'postmark' => 
+    'default' => 'database',
+    'stores' => 
     array (
-      'token' => NULL,
-    ),
-    'ses' => 
-    array (
-      'key' => NULL,
-      'secret' => NULL,
-      'region' => 'us-east-1',
-    ),
-    'resend' => 
-    array (
-      'key' => NULL,
-    ),
-    'slack' => 
-    array (
-      'notifications' => 
+      'array' => 
       array (
-        'bot_user_oauth_token' => NULL,
-        'channel' => NULL,
+        'driver' => 'array',
+        'serialize' => false,
+      ),
+      'database' => 
+      array (
+        'driver' => 'database',
+        'connection' => NULL,
+        'table' => 'cache',
+        'lock_connection' => NULL,
+        'lock_table' => NULL,
+      ),
+      'file' => 
+      array (
+        'driver' => 'file',
+        'path' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/framework/cache/data',
+        'lock_path' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/framework/cache/data',
+      ),
+      'memcached' => 
+      array (
+        'driver' => 'memcached',
+        'persistent_id' => NULL,
+        'sasl' => 
+        array (
+          0 => NULL,
+          1 => NULL,
+        ),
+        'options' => 
+        array (
+        ),
+        'servers' => 
+        array (
+          0 => 
+          array (
+            'host' => '127.0.0.1',
+            'port' => 11211,
+            'weight' => 100,
+          ),
+        ),
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'cache',
+        'lock_connection' => 'default',
+      ),
+      'dynamodb' => 
+      array (
+        'driver' => 'dynamodb',
+        'key' => NULL,
+        'secret' => NULL,
+        'region' => 'us-east-1',
+        'table' => 'cache',
+        'endpoint' => NULL,
+      ),
+      'octane' => 
+      array (
+        'driver' => 'octane',
       ),
     ),
+    'prefix' => '',
+  ),
+  'concurrency' => 
+  array (
+    'default' => 'process',
+  ),
+  'cors' => 
+  array (
+    'paths' => 
+    array (
+      0 => 'api/*',
+      1 => 'sanctum/csrf-cookie',
+    ),
+    'allowed_methods' => 
+    array (
+      0 => '*',
+    ),
+    'allowed_origins' => 
+    array (
+      0 => '*',
+    ),
+    'allowed_origins_patterns' => 
+    array (
+    ),
+    'allowed_headers' => 
+    array (
+      0 => '*',
+    ),
+    'exposed_headers' => 
+    array (
+    ),
+    'max_age' => 0,
+    'supports_credentials' => false,
   ),
   'database' => 
   array (
@@ -368,252 +406,62 @@
       ),
     ),
   ),
-  'cache' => 
+  'filesystems' => 
   array (
-    'default' => 'database',
-    'stores' => 
+    'default' => 'local',
+    'disks' => 
     array (
-      'array' => 
+      'local' => 
       array (
-        'driver' => 'array',
-        'serialize' => false,
+        'driver' => 'local',
+        'root' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/app',
+        'throw' => false,
+        'report' => false,
       ),
-      'database' => 
+      'public' => 
       array (
-        'driver' => 'database',
-        'connection' => NULL,
-        'table' => 'cache',
-        'lock_connection' => NULL,
-        'lock_table' => NULL,
+        'driver' => 'local',
+        'root' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/app/public',
+        'url' => 'http://localhost/storage',
+        'visibility' => 'public',
+        'throw' => false,
+        'report' => false,
       ),
-      'file' => 
+      's3' => 
       array (
-        'driver' => 'file',
-        'path' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/framework/cache/data',
-        'lock_path' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/framework/cache/data',
-      ),
-      'memcached' => 
-      array (
-        'driver' => 'memcached',
-        'persistent_id' => NULL,
-        'sasl' => 
-        array (
-          0 => NULL,
-          1 => NULL,
-        ),
-        'options' => 
-        array (
-        ),
-        'servers' => 
-        array (
-          0 => 
-          array (
-            'host' => '127.0.0.1',
-            'port' => 11211,
-            'weight' => 100,
-          ),
-        ),
-      ),
-      'redis' => 
-      array (
-        'driver' => 'redis',
-        'connection' => 'cache',
-        'lock_connection' => 'default',
-      ),
-      'dynamodb' => 
-      array (
-        'driver' => 'dynamodb',
+        'driver' => 's3',
         'key' => NULL,
         'secret' => NULL,
-        'region' => 'us-east-1',
-        'table' => 'cache',
+        'region' => NULL,
+        'bucket' => NULL,
+        'url' => NULL,
         'endpoint' => NULL,
-      ),
-      'octane' => 
-      array (
-        'driver' => 'octane',
-      ),
-    ),
-    'prefix' => '',
-  ),
-  'session' => 
-  array (
-    'driver' => 'file',
-    'lifetime' => 120,
-    'expire_on_close' => false,
-    'encrypt' => false,
-    'files' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/framework/sessions',
-    'connection' => NULL,
-    'table' => 'sessions',
-    'store' => NULL,
-    'lottery' => 
-    array (
-      0 => 2,
-      1 => 100,
-    ),
-    'cookie' => 'case_dei_nobili_session',
-    'path' => '/',
-    'domain' => NULL,
-    'secure' => NULL,
-    'http_only' => true,
-    'same_site' => 'lax',
-    'partitioned' => false,
-  ),
-  'concurrency' => 
-  array (
-    'default' => 'process',
-  ),
-  'queue' => 
-  array (
-    'default' => 'database',
-    'connections' => 
-    array (
-      'sync' => 
-      array (
-        'driver' => 'sync',
-      ),
-      'database' => 
-      array (
-        'driver' => 'database',
-        'connection' => NULL,
-        'table' => 'jobs',
-        'queue' => 'default',
-        'retry_after' => 90,
-        'after_commit' => false,
-      ),
-      'beanstalkd' => 
-      array (
-        'driver' => 'beanstalkd',
-        'host' => 'localhost',
-        'queue' => 'default',
-        'retry_after' => 90,
-        'block_for' => 0,
-        'after_commit' => false,
-      ),
-      'sqs' => 
-      array (
-        'driver' => 'sqs',
-        'key' => NULL,
-        'secret' => NULL,
-        'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
-        'queue' => 'default',
-        'suffix' => NULL,
-        'region' => 'us-east-1',
-        'after_commit' => false,
-      ),
-      'redis' => 
-      array (
-        'driver' => 'redis',
-        'connection' => 'default',
-        'queue' => 'default',
-        'retry_after' => 90,
-        'block_for' => NULL,
-        'after_commit' => false,
+        'use_path_style_endpoint' => false,
+        'throw' => false,
+        'report' => false,
       ),
     ),
-    'batching' => 
+    'links' => 
     array (
-      'database' => 'sqlite',
-      'table' => 'job_batches',
-    ),
-    'failed' => 
-    array (
-      'driver' => 'database-uuids',
-      'database' => 'sqlite',
-      'table' => 'failed_jobs',
+      '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/public/storage' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/app/public',
     ),
   ),
-  'broadcasting' => 
+  'hashing' => 
   array (
-    'default' => 'log',
-    'connections' => 
+    'driver' => 'bcrypt',
+    'bcrypt' => 
     array (
-      'reverb' => 
-      array (
-        'driver' => 'reverb',
-        'key' => NULL,
-        'secret' => NULL,
-        'app_id' => NULL,
-        'options' => 
-        array (
-          'host' => NULL,
-          'port' => 443,
-          'scheme' => 'https',
-          'useTLS' => true,
-        ),
-        'client_options' => 
-        array (
-        ),
-      ),
-      'pusher' => 
-      array (
-        'driver' => 'pusher',
-        'key' => NULL,
-        'secret' => NULL,
-        'app_id' => NULL,
-        'options' => 
-        array (
-          'cluster' => NULL,
-          'host' => 'api-mt1.pusher.com',
-          'port' => 443,
-          'scheme' => 'https',
-          'encrypted' => true,
-          'useTLS' => true,
-        ),
-        'client_options' => 
-        array (
-        ),
-      ),
-      'ably' => 
-      array (
-        'driver' => 'ably',
-        'key' => NULL,
-      ),
-      'log' => 
-      array (
-        'driver' => 'log',
-      ),
-      'null' => 
-      array (
-        'driver' => 'null',
-      ),
+      'rounds' => '12',
+      'verify' => true,
     ),
-  ),
-  'view' => 
-  array (
-    'paths' => 
+    'argon' => 
     array (
-      0 => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/resources/views',
+      'memory' => 65536,
+      'threads' => 1,
+      'time' => 4,
+      'verify' => true,
     ),
-    'compiled' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/framework/views',
-  ),
-  'cors' => 
-  array (
-    'paths' => 
-    array (
-      0 => 'api/*',
-      1 => 'sanctum/csrf-cookie',
-    ),
-    'allowed_methods' => 
-    array (
-      0 => '*',
-    ),
-    'allowed_origins' => 
-    array (
-      0 => '*',
-    ),
-    'allowed_origins_patterns' => 
-    array (
-    ),
-    'allowed_headers' => 
-    array (
-      0 => '*',
-    ),
-    'exposed_headers' => 
-    array (
-    ),
-    'max_age' => 0,
-    'supports_credentials' => false,
+    'rehash_on_login' => true,
   ),
   'logging' => 
   array (
@@ -713,45 +561,189 @@
       ),
     ),
   ),
-  'filesystems' => 
+  'mail' => 
   array (
-    'default' => 'local',
-    'disks' => 
+    'default' => 'smtp',
+    'mailers' => 
     array (
-      'local' => 
+      'smtp' => 
       array (
-        'driver' => 'local',
-        'root' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/app',
-        'throw' => false,
-        'report' => false,
+        'transport' => 'smtp',
+        'scheme' => NULL,
+        'url' => NULL,
+        'host' => 'smtp.gmail.com',
+        'port' => '587',
+        'username' => 'gytiming@gmail.com',
+        'password' => 'mbgygustahjqhnbp',
+        'timeout' => NULL,
+        'local_domain' => 'localhost',
       ),
-      'public' => 
+      'ses' => 
       array (
-        'driver' => 'local',
-        'root' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/app/public',
-        'url' => 'http://localhost/storage',
-        'visibility' => 'public',
-        'throw' => false,
-        'report' => false,
+        'transport' => 'ses',
       ),
-      's3' => 
+      'postmark' => 
       array (
-        'driver' => 's3',
+        'transport' => 'postmark',
+      ),
+      'resend' => 
+      array (
+        'transport' => 'resend',
+      ),
+      'sendmail' => 
+      array (
+        'transport' => 'sendmail',
+        'path' => '/usr/sbin/sendmail -bs -i',
+      ),
+      'log' => 
+      array (
+        'transport' => 'log',
+        'channel' => NULL,
+      ),
+      'array' => 
+      array (
+        'transport' => 'array',
+      ),
+      'failover' => 
+      array (
+        'transport' => 'failover',
+        'mailers' => 
+        array (
+          0 => 'smtp',
+          1 => 'log',
+        ),
+      ),
+      'roundrobin' => 
+      array (
+        'transport' => 'roundrobin',
+        'mailers' => 
+        array (
+          0 => 'ses',
+          1 => 'postmark',
+        ),
+      ),
+    ),
+    'from' => 
+    array (
+      'address' => 'gytiming@gmail.com',
+      'name' => 'Case dei Nobili',
+    ),
+    'markdown' => 
+    array (
+      'theme' => 'default',
+      'paths' => 
+      array (
+        0 => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/resources/views/vendor/mail',
+      ),
+    ),
+  ),
+  'queue' => 
+  array (
+    'default' => 'database',
+    'connections' => 
+    array (
+      'sync' => 
+      array (
+        'driver' => 'sync',
+      ),
+      'database' => 
+      array (
+        'driver' => 'database',
+        'connection' => NULL,
+        'table' => 'jobs',
+        'queue' => 'default',
+        'retry_after' => 90,
+        'after_commit' => false,
+      ),
+      'beanstalkd' => 
+      array (
+        'driver' => 'beanstalkd',
+        'host' => 'localhost',
+        'queue' => 'default',
+        'retry_after' => 90,
+        'block_for' => 0,
+        'after_commit' => false,
+      ),
+      'sqs' => 
+      array (
+        'driver' => 'sqs',
         'key' => NULL,
         'secret' => NULL,
-        'region' => NULL,
-        'bucket' => NULL,
-        'url' => NULL,
-        'endpoint' => NULL,
-        'use_path_style_endpoint' => false,
-        'throw' => false,
-        'report' => false,
+        'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
+        'queue' => 'default',
+        'suffix' => NULL,
+        'region' => 'us-east-1',
+        'after_commit' => false,
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'default',
+        'queue' => 'default',
+        'retry_after' => 90,
+        'block_for' => NULL,
+        'after_commit' => false,
       ),
     ),
-    'links' => 
+    'batching' => 
     array (
-      '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/public/storage' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/app/public',
+      'database' => 'sqlite',
+      'table' => 'job_batches',
     ),
+    'failed' => 
+    array (
+      'driver' => 'database-uuids',
+      'database' => 'sqlite',
+      'table' => 'failed_jobs',
+    ),
+  ),
+  'services' => 
+  array (
+    'postmark' => 
+    array (
+      'token' => NULL,
+    ),
+    'ses' => 
+    array (
+      'key' => NULL,
+      'secret' => NULL,
+      'region' => 'us-east-1',
+    ),
+    'resend' => 
+    array (
+      'key' => NULL,
+    ),
+    'slack' => 
+    array (
+      'notifications' => 
+      array (
+        'bot_user_oauth_token' => NULL,
+        'channel' => NULL,
+      ),
+    ),
+  ),
+  'session' => 
+  array (
+    'driver' => 'file',
+    'lifetime' => 120,
+    'expire_on_close' => false,
+    'encrypt' => false,
+    'files' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/framework/sessions',
+    'connection' => NULL,
+    'table' => 'sessions',
+    'store' => NULL,
+    'lottery' => 
+    array (
+      0 => 2,
+      1 => 100,
+    ),
+    'cookie' => 'case_dei_nobili_session',
+    'path' => '/',
+    'domain' => NULL,
+    'secure' => NULL,
+    'http_only' => true,
+    'same_site' => 'lax',
+    'partitioned' => false,
   ),
   'tinker' => 
   array (
@@ -766,5 +758,13 @@
       0 => 'App\\Nova',
     ),
     'trust_project' => 'always',
+  ),
+  'view' => 
+  array (
+    'paths' => 
+    array (
+      0 => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/resources/views',
+    ),
+    'compiled' => '/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2/storage/framework/views',
   ),
 );

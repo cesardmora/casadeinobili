@@ -13,9 +13,9 @@ class PropertyController extends Controller
      */
     public function index(): View
     {
-        $properties = Property::published()
-            ->orderBy('sort_order')
-            ->get();
+        $properties = cache()->remember('properties_index_collection', 3600, function () {
+            return Property::published()->orderBy('sort_order')->get();
+        });
 
         return view('pages.properties.index', compact('properties'));
     }

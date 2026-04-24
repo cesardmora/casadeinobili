@@ -22,6 +22,7 @@ class Property extends Model
         'bedrooms',
         'bathrooms',
         'image_url',
+        'airbnb_url',
         'gallery_images',
         'is_published',
         'is_coming_soon',
@@ -79,5 +80,36 @@ class Property extends Model
             $parts[] = "{$this->bedrooms} rooms";
         }
         return implode(' · ', $parts);
+    }
+
+    public function getImageUrlAttribute($value): ?string
+    {
+        return self::preferWebp($value);
+    }
+
+    public function getGalleryImagesAttribute($value): array
+    {
+        $decoded = is_array($value) ? $value : json_decode($value ?? '[]', true);
+
+        if (! is_array($decoded)) {
+            return [];
+        }
+
+        return array_map([self::class, 'preferWebp'], $decoded);
+    }
+
+    protected static function preferWebp(?string $path): ?string
+    {
+        if (! $path || preg_match('#^https?://#', $path) === 1) {
+            return $path;
+        }
+
+        $webpPath = preg_replace('/\.(jpe?g|png)$/i', '.webp', $path);
+
+        if (is_string($webpPath) && file_exists(public_path($webpPath))) {
+            return $webpPath;
+        }
+
+        return $path;
     }
 }

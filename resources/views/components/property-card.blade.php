@@ -24,13 +24,13 @@
 @else
   {{-- Regular property card --}}
   <div class="property-card h-96 lg:h-[500px] reveal reveal-delay-{{ $loop->index + 1 }} relative overflow-hidden group cursor-pointer">
-    <img
-      src="{{ $property->image_url }}"
+    <x-responsive-image
+      :src="$property->image_url"
       alt="{{ $property->name }}"
       class="property-image absolute inset-0 w-full h-full object-cover"
-     
-      loading="lazy"
-    >
+      sizes="(min-width: 1024px) 50vw, 100vw"
+      :widths="[480, 768, 1200, 1600]"
+    />
 
     {{-- Botón "Register Interest" — arriba derecha, pequeño --}}
     {{-- <div class="absolute top-4 right-4 z-20">

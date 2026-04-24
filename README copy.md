@@ -42,6 +42,7 @@ php artisan route:cache
 php artisan view:cache
 php artisan optimize
 
+|------|---------||------|---------||------|---------||------|---------||------|---------||------|---------|
 
 5. Imágenes sin optimizar
 	•	Usas imágenes .jpg sin formato WebP (aunque ya tienes algunas .webp)
@@ -51,6 +52,21 @@ Solución:
 	•	Convertir todas las imágenes a WebP
 	•	Implementar srcset y sizes para responsive loading
 	•	Usar lazy loading nativo (loading="lazy" ya está en algunas, pero no en todas)
+
+6. Base de datos SQLite en producción
+SQLite funciona bien para sitios pequeños, pero para un sitio de lujo con potencial escalabilidad:
+
+Solución: Migrar a MySQL/PostgreSQL en producción con conexión pool.
+
+8. Queue en database sin worker
+Tienes QUEUE_CONNECTION=database pero no hay configuración de un worker (Supervisor, Redis, etc.).
+
+Solución: Configurar Redis + Horizon o al menos un cron job para queue:work.
+
+
+
+|------|---------||------|---------||------|---------||------|---------||------|---------||------|---------|
+
 
 ## 🚀 Quick Start
 
@@ -135,7 +151,7 @@ php artisan serve
 
 Visit **http://localhost:8000**
 
----
+|------|---------||------|---------||------|---------||------|---------||------|---------||------|---------|
 
 ## 📁 Project Structure
 
@@ -392,6 +408,8 @@ info.php	https://casadeinobili.wantdsign.com/info.php?key=Nobili2026Secure!
 reseed.php	https://casadeinobili.wantdsign.com/reseed.php?key=Nobili2026Secure!
 update-site.php	https://casadeinobili.wantdsign.com/update-site.php?key=Nobili2026Secure!
 
+http://127.0.0.1:8000/admin/system-tools
+
 Sin ?key=... → aparece “Acceso denegado” con error 403.
 
 Para producción, cambia la clave:
@@ -409,3 +427,63 @@ public/reseed.php
 public/update-site.php
 resources/views/layouts/app.blade.php
 public/css/tailwind.css
+
+
+
+
+Comandos para subir a GitHub
+# 1. Ir al directorio del proyecto
+cd "/Users/cesar/Documents/Desktop/2026 March/casadeinobili 2"
+
+# 2. Añadir todos los archivos (el .gitignore filtra lo que no debe subir)
+git add .
+
+# 3. Primer commit
+git commit -m "Initial commit: Case dei Nobili Laravel website"
+
+# 4. Conectar con tu repositorio de GitHub (cambia la URL)
+git remote add origin https://github.com/TU_USUARIO/casadeinobili.git
+
+# 5. Subir a GitHub
+git push -u origin main
+Si main no existe, usa git branch -M main antes del push.
+
+Cuando alguien descarga el proyecto, estos son los pasos:
+# 1. Clonar
+git clone https://github.com/TU_USUARIO/casadeinobili.git
+cd casadeinobili
+
+# 2. Instalar PHP dependencies
+composer install
+
+# 3. Instalar Node dependencies
+npm install
+
+# 4. Crear .env
+cp .env.example .env
+
+# 5. Generar APP_KEY
+php artisan key:generate
+
+# 6. Crear SQLite database
+touch database/database.sqlite
+
+# 7. Migrar + seed
+php artisan migrate --seed
+
+# 8. Compilar Tailwind CSS
+npm run build
+
+# 9. Iniciar servidor
+php artisan serve
+Visita http://localhost:8000
+
+Lo que NO se sube a GitHub (.gitignore):
+Ignorado	Razón
+.env	Contiene contraseñas y claves secretas
+vendor/	Se regenera con composer install
+node_modules/	Se regenera con npm install
+database/database.sqlite	Se crea con touch + migrate --seed
+storage/* (excepto .gitkeep)	Logs, sesiones, caché — efímeros
+.copia*, .bak	Archivos de respaldo basura
+.qwen/, X_linux/, test.php	Ficheros locales del proyecto

@@ -13,7 +13,7 @@ class AboutController extends Controller
                 'name'  => 'Tatjana von Griesheim-Radović & Georg von Griesheim',
                 'role'  => 'Founder & Director',
                 'bio'   => 'Over 20 years restoring historical heritage on the Dalmatian coast. Passionate about medieval architecture and the soul of every stone.',
-                'image' => '/images/about_us_01.jpg',
+                'image' => '/images/about_us_01.webp',
             ],
             // [
             //     'name'  => 'Ana Kovačević',

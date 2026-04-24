@@ -12,12 +12,12 @@ class HomeController extends Controller
      */
     public function index(): View
     {
-        $properties = Property::published()
-            ->orderBy('sort_order')
-            ->get();
+        $properties = cache()->remember('properties_home_collection', 3600, function () {
+            return Property::published()->orderBy('sort_order')->get();
+        });
 
         $stats = [
-            'properties' => Property::published()->count(),
+            'properties' => $properties->count(),
             'centuries'  => 'V',
             'island'     => 1,
         ];

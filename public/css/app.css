@@ -1482,18 +1482,8 @@ footer[id] {
 /* En tu CSS global o componente */
 /* En tu archivo CSS global (ej: resources/css/app.css) */
 .zoom-bg {
-  /* Aplicar la imagen desde la variable CSS */
-  background-image: var(--bg-image);
-  
-  /* Comportamiento de fondo: cubrir sin deformar */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  
-  /* Transición suave para el zoom */
+  display: block;
   transition: transform 0.5s ease-out;
-  
-  /* Asegurar que el elemento tenga dimensiones */
   will-change: transform;
 }
 

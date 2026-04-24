@@ -93,6 +93,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =============================================
+  // Botón volver arriba
+  // =============================================
+  const backToTop = document.getElementById("backToTop");
+  if (backToTop) {
+    window.addEventListener(
+      "scroll",
+      function () {
+        backToTop.classList.toggle("visible", window.pageYOffset > 600);
+      },
+      { passive: true }
+    );
+  }
+
+  // =============================================
   // Smooth scroll — soporta "#seccion" y "https://dominio.com#seccion"
   // =============================================
   document.querySelectorAll("a[href]").forEach(function (anchor) {
@@ -155,25 +169,11 @@ document.addEventListener("DOMContentLoaded", function () {
           btn.textContent = original;
           btn.disabled = false;
         }, 3000);
-      } catch {
+    } catch {
         btn.textContent = original;
         btn.disabled = false;
       }
     });
-
-    // =============================================
-    // Botón volver arriba
-    // =============================================
-    const backToTop = document.getElementById("backToTop");
-    if (backToTop) {
-      window.addEventListener(
-        "scroll",
-        function () {
-          backToTop.classList.toggle("visible", window.pageYOffset > 600);
-        },
-        { passive: true }
-      );
-    }
   }
 
   // =============================================

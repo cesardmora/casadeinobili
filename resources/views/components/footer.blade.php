@@ -58,6 +58,8 @@
   <div class="footer-bottom">
     <span data-i18n="footer_copy">© 2026 TCG unique properties d.o.o. All rights reserved.</span>
     <span style="color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;font-size:0.52rem;">Case dei Nobili · Korčula · Croatia</span>
+    <span class="footer-credit">Designed by <a href="https://wantdsign.com/" target="_blank" rel="noopener nofollow">Wantdsign Studio</a> & 
+      <a href="http://www.byladesign.com/" target="_blank" rel="noopener nofollow">Byladesign </a></span>
   </div>
   <button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">

@@ -18,16 +18,32 @@
 </script>
 @endpush
 
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Case dei Nobili",
+  "url": "{{ url()->current() }}",
+  "description": "Learn about the restoration philosophy and team behind Case dei Nobili in Korčula."
+}
+</script>
+@endpush
+
 @section('content')
 
   {{-- Hero --}}
   <section class="hero-section">
     <div class="hero-bg"></div>
-    <img
-      src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1800&q=85"
+    <x-responsive-image
+      src="https://images.unsplash.com/photo-1600585154526-990dced4db0d"
       alt="About Us"
       class="hero-img-desktop"
-    >
+      sizes="100vw"
+      :widths="[768, 1280, 1600, 1800]"
+      loading="eager"
+      fetchpriority="high"
+    />
     <div class="hero-overlay"></div>
     <div class="hero-pattern" aria-hidden="true"></div>
 
@@ -91,12 +107,13 @@
 
         <div class="reveal reveal-delay-2">
           <div class="relative aspect-[4/5]">
-            <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+            <x-responsive-image
+              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
               alt="Historia vonGriesheim"
               class="w-full h-full object-cover"
-              loading="lazy"
-            >
+              sizes="(min-width: 1024px) 42vw, 100vw"
+              :widths="[480, 768, 1200, 1600]"
+            />
             <div class="absolute bottom-0 left-0 right-0 p-8"
                  style="background: linear-gradient(to top, rgba(13,31,40,0.8), transparent);">
               <p class="text-xs tracking-widest uppercase" style="color: var(--patina-light);">Korčula, Croacia</p>
@@ -154,12 +171,13 @@
         @foreach($team as $i => $member)
           <div class="reveal reveal-delay-{{ $i + 1 }}">
             <div class="aspect-[3/4] overflow-hidden mb-6">
-              <img
-                src="{{ $member['image'] }}"
+              <x-responsive-image
+                :src="$member['image']"
                 alt="{{ $member['name'] }}"
                 class="w-full h-full object-cover property-image"
-                loading="lazy"
-              >
+                sizes="(min-width: 768px) 33vw, 100vw"
+                :widths="[480, 768, 1200]"
+              />
             </div>
             <p class="text-xs tracking-widest uppercase mb-2" style="color: var(--patina);">
               {{ $member['role'] }}
