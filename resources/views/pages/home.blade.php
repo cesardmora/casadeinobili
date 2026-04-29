@@ -6,22 +6,10 @@
 @section('og_image', asset('images/Korcula_birds_eye_2.webp'))
 @section('og_type', 'website')
 
-@push('head')
-{{-- JSON-LD Structured Data --}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Case dei Nobili",
-  "url": "{{ url('/') }}",
-  "description": "Four historic residences on the island of Korčula. Each one, a livable chapter of Dalmatian history.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Korčula",
-    "addressCountry": "HR"
-  }
-}
-</script>
+{{-- JSON-LD for homepage is already output by the layout's @graph block --}}
+
+@push('preload')
+<link rel="preload" as="image" href="{{ asset('images/Korcula_birds_eye_2.webp') }}" fetchpriority="high">
 @endpush
 
 @section('content')
@@ -66,7 +54,7 @@
         {{-- <div class="max-w-12xl">
           <p class="text-xs tracking-widest uppercase mb-8 opacity-60" style="color: var(--stone);"
             data-i18n="hero_location">Korčula, Croatia</p>
-          <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-light leading-tight mb-8"
+          <h1 class="font-display text-6xl md:text-7xl lg:text-8xl font-light leading-tight mb-8"
               style="color: var(--stone-light);">
             <span data-i18n="">Case dei</span>
             <em class="font-normal" style="color: var(--patina-light);"
@@ -85,12 +73,7 @@
         
             {{-- REEMPLAZO DEL H1 POR SVG --}}
             <div class="mb-8">
-              <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-light leading-tight mb-8 hidden"
-                  style="color: var(--stone-light);">
-                <span data-i18n="">Case dei</span>
-                <em class="font-normal" style="color: var(--patina-light);"
-                    data-i18n="">Nobili</em>
-              </h1>
+            <h1 class="sr-only">Case dei Nobili — Heritage Houses of Korčula's Noble Families</h1>
                 <img 
                     src="{{ asset('images/case-dei-nobili-logo.svg') }}" 
                     alt="Case dei Nobili" 
@@ -181,7 +164,7 @@
         <div class="reveal">
           <p class="text-xs tracking-widest uppercase mb-6" style="color: var(--stone);"
             data-i18n="about_eyebrow">Our Philosophy</p>
-          <h2 class="font-display text-4xl md:text-5xl font-light leading-tight mb-8" style="color: var(--stone);">
+          <h2 class="font-display text-4xl md:text-6xl font-light leading-tight mb-8" style="color: var(--stone);">
             <span data-i18n="about_title_1">CASE DEI </span><br>
             <em class="italic" style="color: var(--stone-light);"
                 data-i18n="about_title_2">NOBILI</em>
@@ -202,17 +185,17 @@
 
         <div class="reveal reveal-delay-3 grid grid-cols-3 gap-8 mt-8">
           <div class="text-center">
-            <p class="font-display text-4xl lg:text-5xl font-light" style="color: var(--stone-light);">{{ $stats['properties'] }}</p>
+            <p class="font-display text-4xl lg:text-6xl font-light" style="color: var(--stone-light);">{{ $stats['properties'] }}</p>
             <p class="text-xs tracking-widest uppercase mt-2" style="color: var(--stone);"
               data-i18n="stat_properties">Properties</p>
           </div>
           <div class="text-center">
-            <p class="font-display text-4xl lg:text-5xl font-light" style="color: var(--stone-light);">{{ $stats['centuries'] }}</p>
+            <p class="font-display text-4xl lg:text-6xl font-light" style="color: var(--stone-light);">{{ $stats['centuries'] }}</p>
             <p class="text-xs tracking-widest uppercase mt-2" style="color: var(--stone);"
               data-i18n="stat_centuries">Centuries</p>
           </div>
           <div class="text-center">
-            <p class="font-display text-4xl lg:text-5xl font-light" style="color: var(--stone-light);">{{ $stats['island'] }}</p>
+            <p class="font-display text-4xl lg:text-6xl font-light" style="color: var(--stone-light);">{{ $stats['island'] }}</p>
             <p class="text-xs tracking-widest uppercase mt-2" style="color: var(--stone);"
               data-i18n="stat_island">Island</p>
           </div>
@@ -271,7 +254,7 @@
           <div class="reveal">
             <p class="text-xs tracking-widest uppercase mb-6" style="color: var(--stone);"
               data-i18n="about_eyebrow">Our Philosophy</p>
-            <h2 class="font-display text-4xl md:text-5xl font-light leading-tight mb-8" style="color: var(--stone);">
+            <h2 class="font-display text-4xl md:text-6xl font-light leading-tight mb-8" style="color: var(--stone);">
               <span data-i18n="about_title_1">CASE DEI </span><br>
               <em class="italic" style="color: var(--stone-light);"
                   data-i18n="about_title_2">NOBILI</em>
@@ -373,7 +356,7 @@
       <div class="mb-8 lg:mb-12 reveal">
         <p class="text-xs tracking-widest uppercase mb-4" style="color: var(--stone);">The Properties</p>
         <div class="flex items-end justify-between gap-8">
-          <h2 class="font-display text-4xl md:text-5xl font-light" style="color: var(--stone);">
+          <h2 class="font-display text-4xl md:text-6xl font-light" style="color: var(--stone);">
             Four <em>extraordinary</em><br>residences</h2>
           <div class="hidden md:block w-32 h-px" style="background: var(--stone-light);"></div>
         </div>
@@ -401,7 +384,7 @@
           </svg>
           <span class="text-xs tracking-widest uppercase" style="color: var(--patina);">Private Access</span>
         </div>
-        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-light mb-6" style="color: var(--stone-light);">
+        <h2 class="font-display text-4xl md:text-6xl lg:text-6xl font-light mb-6" style="color: var(--stone-light);">
           Weddings at Case dei Nobili
         </h2>
         <p class="text-base lg:text-lg font-light max-w-2xl mx-auto" style="color: var(--stone); opacity: 0.7;">
@@ -537,7 +520,7 @@
               <span class="text-xs tracking-widest uppercase" style="color: var(--patina);"
                     data-i18n="wed_eyebrow">Weddings & Celebrations</span>
             </div>
-            <h2 class="font-display text-4xl md:text-5xl font-light leading-tight mb-8"
+            <h2 class="font-display text-4xl md:text-6xl font-light leading-tight mb-8"
                 style="color: var(--stone-light);"
                 data-i18n="wed_title">
               A setting for<br>
@@ -623,7 +606,7 @@
       <div class="text-center mb-16 reveal">
         <p class="text-xs tracking-widest uppercase mb-4" style="color: var(--patina);"
            data-i18n="isl_eyebrow">The Setting</p>
-        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-light mb-6"
+        <h2 class="font-display text-4xl md:text-6xl lg:text-6xl font-light mb-6"
             style="color: var(--stone-light);">
           <span data-i18n="isl_title">Korčula — <em style="color: var(--patina-light);">the island refined<br>by time</em></span>
         </h2>
@@ -706,7 +689,7 @@
       <div class="text-center mb-16 reveal">
         <p class="text-xs tracking-widest uppercase mb-4" style="color: var(--patina);"
            data-i18n="isl_eyebrow">The Setting</p>
-        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-light mb-6"
+        <h2 class="font-display text-4xl md:text-6xl lg:text-6xl font-light mb-6"
             style="color: var(--stone-light);">
           <span data-i18n="isl_title">Korčula — <em style="color: var(--patina-light);">the island<br>refined by time</em></span>
         </h2>
@@ -918,109 +901,68 @@
                 Guest Experiences
             </p>
             
-            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-light mb-6"
+            <h2 class="font-display text-4xl md:text-6xl lg:text-6xl font-light mb-6"
                 style="color: var(--stone-light);">
               <span data-i18n=""> What  — <em style="color: var(--patina-light);">Our Guests Say</em></span>
             </h2>
         </div>
 
         <!-- Grid de Testimonios -->
+        @php
+        $testimonials = [
+            [
+                'quote' => 'We stayed at Ca Serenissima for two weeks and it was truly exceptional. The team arranged everything from airport pickup to restaurant recommendations. A rare sense of living inside history — we will absolutely return.',
+                'author' => 'Rizwan M.',
+                'role' => 'United Kingdom',
+                'property' => 'Ca Serenissima',
+            ],
+            [
+                'quote' => 'Palazzo Veneto exceeded every expectation. The stonework, the vaulted ceilings, the silence of the old town at night — you simply cannot find this anywhere else in the Adriatic. An unforgettable two weeks.',
+                'author' => 'Sophie & Lukas B.',
+                'role' => 'Germany',
+                'property' => 'Palazzo Veneto',
+            ],
+            [
+                'quote' => 'We hosted our wedding celebrations at Palazzino Nobile. The von Griesheim team coordinated everything with complete discretion and warmth. Our guests still talk about it.',
+                'author' => 'Charlotte & James R.',
+                'role' => 'Ireland',
+                'property' => 'Palazzino Nobile',
+            ],
+            [
+                'quote' => 'Korčula is one of the most beautiful places I have ever visited, and Case dei Nobili gave us the keys to experience it like a local. The concierge service was impeccable from the very first message.',
+                'author' => 'Maarten V.',
+                'role' => 'Netherlands',
+                'property' => 'Ca Serenissima',
+            ],
+        ];
+        @endphp
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            @foreach($testimonials as $t)
+            <div class="group reveal reveal-delay-{{ $loop->iteration }} flex flex-col p-8 transition-all duration-500 ease-out hover:-translate-y-1"
+                 style="background: rgba(255,255,255,0.04); border: 1px solid rgba(184,149,107,0.18);">
 
-            {{-- TESTIMONIO 1 --}}
-            <div class="group bg-white rounded-sm shadow-[0_2px_20px_rgba(0,0,0,0.04)] 
-                        p-8 md:p-9 transition-all duration-500 ease-out
-                        hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1">
-                
+                {{-- Stars --}}
                 <div class="flex gap-1 mb-6">
                     @for($i = 0; $i < 5; $i++)
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" data-source-loc="src/App.tsx:33:2" style="color: rgb(201, 168, 124);"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" data-source-loc="src/App.tsx:34:4"></path></svg>
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true" style="color: var(--gold);">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
                     @endfor
                 </div>
 
-                <blockquote class="mb-8">
-                    <p class="text-[15px] leading-relaxed text-gray-600 italic"
-                      style="font-family: 'Playfair Display', serif;">
-                        ""We stayed at the Ca Serenissima apartment in Korčula for two weeks and it was exceptional. The Casa dei Nobili team arranged everything from airport pickup to restaurant recommendations. Our children loved it. Will definitely return..."
+                <blockquote class="flex-1 mb-8">
+                    <p class="font-display text-sm leading-relaxed font-light italic" style="color: var(--stone); opacity: 0.85;">
+                        "{{ $t['quote'] }}"
                     </p>
                 </blockquote>
 
-                <div class="pt-5 border-t border-gray-100">
-                    <p class="text-sm font-semibold text-gray-900">Rizwan M.</p>
-                    <p class="text-xs text-gray-400 mt-1">Frequent Business Traveler</p>
+                <div class="pt-5" style="border-top: 1px solid rgba(184,149,107,0.15);">
+                    <p class="text-xs tracking-wider uppercase font-light" style="color: var(--stone-light);">{{ $t['author'] }}</p>
+                    <p class="text-xs tracking-wider uppercase mt-1 font-light" style="color: var(--patina); opacity: 0.8;">{{ $t['role'] }} · {{ $t['property'] }}</p>
                 </div>
             </div>
-            {{-- TESTIMONIO 1 --}}
-            <div class="group bg-white rounded-sm shadow-[0_2px_20px_rgba(0,0,0,0.04)] 
-                        p-8 md:p-9 transition-all duration-500 ease-out
-                        hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1">
-                
-                <div class="flex gap-1 mb-6">
-                    @for($i = 0; $i < 5; $i++)
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" data-source-loc="src/App.tsx:33:2" style="color: rgb(201, 168, 124);"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" data-source-loc="src/App.tsx:34:4"></path></svg>
-                    @endfor
-                </div>
-
-                <blockquote class="mb-8">
-                    <p class="text-[15px] leading-relaxed text-gray-600 italic"
-                      style="font-family: 'Playfair Display', serif;">
-                        ""We stayed at the Ca Serenissima apartment in Korčula for two weeks and it was exceptional. The Casa dei Nobili team arranged everything from airport pickup to restaurant recommendations. Our children loved it. Will definitely return..."
-                    </p>
-                </blockquote>
-
-                <div class="pt-5 border-t border-gray-100">
-                    <p class="text-sm font-semibold text-gray-900">Rizwan M.</p>
-                    <p class="text-xs text-gray-400 mt-1">Frequent Business Traveler</p>
-                </div>
-            </div>
-            {{-- TESTIMONIO 1 --}}
-            <div class="group bg-white rounded-sm shadow-[0_2px_20px_rgba(0,0,0,0.04)] 
-                        p-8 md:p-9 transition-all duration-500 ease-out
-                        hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1">
-                
-                <div class="flex gap-1 mb-6">
-                    @for($i = 0; $i < 5; $i++)
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" data-source-loc="src/App.tsx:33:2" style="color: rgb(201, 168, 124);"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" data-source-loc="src/App.tsx:34:4"></path></svg>
-                    @endfor
-                </div>
-
-                <blockquote class="mb-8">
-                    <p class="text-[15px] leading-relaxed text-gray-600 italic"
-                      style="font-family: 'Playfair Display', serif;">
-                        ""We stayed at the Ca Serenissima apartment in Korčula for two weeks and it was exceptional. The Casa dei Nobili team arranged everything from airport pickup to restaurant recommendations. Our children loved it. Will definitely return..."
-                    </p>
-                </blockquote>
-
-                <div class="pt-5 border-t border-gray-100">
-                    <p class="text-sm font-semibold text-gray-900">Rizwan M.</p>
-                    <p class="text-xs text-gray-400 mt-1">Frequent Business Traveler</p>
-                </div>
-            </div>
-            {{-- TESTIMONIO 1 --}}
-            <div class="group bg-white rounded-sm shadow-[0_2px_20px_rgba(0,0,0,0.04)] 
-                        p-8 md:p-9 transition-all duration-500 ease-out
-                        hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1">
-                
-                <div class="flex gap-1 mb-6">
-                    @for($i = 0; $i < 5; $i++)
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" data-source-loc="src/App.tsx:33:2" style="color: rgb(201, 168, 124);"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" data-source-loc="src/App.tsx:34:4"></path></svg>
-                    @endfor
-                </div>
-
-                <blockquote class="mb-8">
-                    <p class="text-[15px] leading-relaxed text-gray-600 italic"
-                      style="font-family: 'Playfair Display', serif;">
-                        ""We stayed at the Ca Serenissima apartment in Korčula for two weeks and it was exceptional. The Casa dei Nobili team arranged everything from airport pickup to restaurant recommendations. Our children loved it. Will definitely return..."
-                    </p>
-                </blockquote>
-
-                <div class="pt-5 border-t border-gray-100">
-                    <p class="text-sm font-semibold text-gray-900">Rizwan M.</p>
-                    <p class="text-xs text-gray-400 mt-1">Frequent Business Traveler</p>
-                </div>
-            </div>
-
-            {{-- Repite para cada testimonio --}}
+            @endforeach
         </div>
     </div>
   </section>
@@ -1035,7 +977,7 @@
          data-i18n="contact_eyebrow">Contact</p>
  
       {{-- Title --}}
-      <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-light mb-8" style="color: var(--stone-light);"
+      <h2 class="font-display text-4xl md:text-6xl lg:text-6xl font-light mb-8" style="color: var(--stone-light);"
           data-i18n="contact_title">
         Bookings & <em style="color: var(--patina-light);">Enquiries</em>
       </h2>
@@ -1059,7 +1001,7 @@
  
       {{-- Phone --}}
       <p class="text-sm font-light mb-4">
-        <a href="tel:+385996551938" class="hover:underline" style="color: var(--stone); opacity: 0.7;">
+        <a href="tel:+34616969596" class="hover:underline" style="color: var(--stone); opacity: 0.7;">
           Curator: +34 616 969 596
         </a>
       </p>

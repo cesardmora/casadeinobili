@@ -2,6 +2,14 @@
 
 return [
     'name' => env('APP_NAME', 'Case dei Nobili'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Secret Key
+    |--------------------------------------------------------------------------
+    | Used to protect the /admin/* routes. Set CONTACT_INQUIRIES_KEY in .env.
+    */
+    'admin_key' => env('CONTACT_INQUIRIES_KEY'),
     'env' => env('APP_ENV', 'production'),
     'debug' => (bool) env('APP_DEBUG', false),
     'url' => env('APP_URL', 'http://localhost'),

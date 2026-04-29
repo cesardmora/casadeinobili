@@ -95,6 +95,7 @@
       'View' => 'Illuminate\\Support\\Facades\\View',
       'Vite' => 'Illuminate\\Support\\Facades\\Vite',
     ),
+    'admin_key' => 'Nobili2026Secure!',
   ),
   'auth' => 
   array (

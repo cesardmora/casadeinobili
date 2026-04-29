@@ -3,19 +3,40 @@
 @section('title', $property->name . ' | Case dei Nobili')
 @section('meta_description', $property->tagline ?? $property->description)
 @section('canonical', url()->current())
-@section('og_type', 'article')
+@section('og_type', 'website')
 @if($property->image_url)
 @section('og_image', str_starts_with($property->image_url, 'http') ? $property->image_url : asset($property->image_url))
 @endif
 
 @push('head')
 {{-- JSON-LD Structured Data --}}
-<script type="application/ld+json">
+{{-- <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LodgingBusiness",
+  "@type": ["LodgingBusiness", "VacationRental"],
   "name": "{{ $property->name }}",
   "url": "{{ url()->current() }}",
+
+  "priceRange": "€€€€",
+  @if($property->amenities)
+  "amenityFeature": [
+    @foreach($property->amenities as $amenity)
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "{{ $amenity }}",
+      "value": true
+    }@if(!$loop->last),@endif
+    @endforeach
+  ],
+  @endif
+  @if($property->bedrooms)
+  "numberOfBedrooms": {{ $property->bedrooms }},
+  @endif
+  "petsAllowed": false,
+  @if($property->airbnb_url)
+  "tourBookingPage": "{{ $property->airbnb_url }}",
+  @endif
+
   "description": "{{ $property->tagline ?? $property->description }}",
   "address": {
     "@type": "PostalAddress",
@@ -29,7 +50,135 @@
     "ratingValue": "5"
   }
 }
+</script> --}}
+
+{{-- JSON-LD Structured Data --}}
+@php
+  $notEmpty = fn ($value) => ! is_null($value) && $value !== '' && $value !== [];
+
+  $description = trim(strip_tags(
+      $property->tagline
+      ?: $property->description
+      ?: $property->long_description
+      ?: ''
+  ));
+
+  $images = collect([$property->image_url])
+      ->merge($property->gallery_images ?? [])
+      ->filter(fn ($image) => is_string($image) && trim($image) !== '')
+      ->map(fn ($image) => str_starts_with($image, 'http') ? $image : asset($image))
+      ->unique()
+      ->values()
+      ->all();
+
+  $amenityRules = [
+      'wifi' => ['wifi', 'wi-fi', 'internet'],
+      'tv' => ['smart tv', 'television'],
+      'ac' => ['air conditioning', 'a/c'],
+      'heating' => ['heating', 'underfloor heating'],
+      'fireplace' => ['fireplace'],
+      'kitchen' => ['kitchen'],
+      'beachAccess' => ['beach', 'waterfront'],
+      'childFriendly' => ['family', 'families', 'children'],
+  ];
+
+  $amenityFeature = collect($property->amenities ?? [])
+      ->flatMap(function ($amenity) use ($amenityRules) {
+          $text = strtolower($amenity);
+
+          return collect($amenityRules)
+              ->filter(fn ($needles) => collect($needles)->contains(
+                  fn ($needle) => str_contains($text, $needle)
+              ))
+              ->keys()
+              ->map(fn ($name) => [
+                  '@type' => 'LocationFeatureSpecification',
+                  'name' => $name,
+                  'value' => true,
+              ]);
+      })
+      ->unique('name')
+      ->values()
+      ->all();
+
+  $additionalProperty = collect($property->amenities ?? [])
+      ->filter()
+      ->map(fn ($amenity) => [
+          '@type' => 'PropertyValue',
+          'name' => trim($amenity),
+          'value' => true,
+      ])
+      ->values()
+      ->all();
+
+  $containsPlace = array_filter([
+      '@type' => 'Accommodation',
+      'additionalType' => 'EntirePlace',
+      'name' => $property->name,
+      'description' => $description ?: null,
+      'occupancy' => $property->guests ? [
+          '@type' => 'QuantitativeValue',
+          'value' => $property->guests,
+          'unitText' => 'guests',
+      ] : null,
+      'numberOfBedrooms' => $property->bedrooms ?: null,
+      'numberOfBathroomsTotal' => $property->bathrooms ?: null,
+      'amenityFeature' => $amenityFeature ?: null,
+      'additionalProperty' => $additionalProperty ?: null,
+      'petsAllowed' => false,
+      'smokingAllowed' => false,
+  ], $notEmpty);
+
+  $schema = array_filter([
+      '@context' => 'https://schema.org',
+      '@type' => 'VacationRental',
+      '@id' => route('properties.show', $property) . '#vacation-rental',
+      'identifier' => 'case-dei-nobili-' . $property->slug,
+      'name' => $property->name,
+      'url' => route('properties.show', $property),
+      'mainEntityOfPage' => [
+          '@type' => 'WebPage',
+          '@id' => url()->current(),
+      ],
+      'description' => $description ?: null,
+      'brand' => [
+          '@type' => 'Brand',
+          'name' => 'Case dei Nobili',
+          'url' => url('/'),
+      ],
+      'priceRange' => '€€€€',
+      'currenciesAccepted' => 'EUR',
+      'telephone' => '+385996551938',
+      'address' => [
+          '@type' => 'PostalAddress',
+          'addressLocality' => 'Korčula',
+          'addressRegion' => 'Dubrovnik-Neretva County',
+          'addressCountry' => 'HR',
+      ],
+      'image' => $images ?: null,
+      'containsPlace' => $containsPlace,
+  ], $notEmpty);
+
+  if ($property->airbnb_url && ! str_contains($property->airbnb_url, '/calendar/ical/')) {
+      $schema['sameAs'] = [$property->airbnb_url];
+  }
+
+  if (isset($property->latitude, $property->longitude) && $property->latitude && $property->longitude) {
+      $schema['latitude'] = (float) $property->latitude;
+      $schema['longitude'] = (float) $property->longitude;
+      $schema['geo'] = [
+          '@type' => 'GeoCoordinates',
+          'latitude' => (float) $property->latitude,
+          'longitude' => (float) $property->longitude,
+      ];
+  }
+@endphp
+
+<script type="application/ld+json">
+{!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) !!}
 </script>
+
+
 @endpush
 
 @section('content')
@@ -102,6 +251,7 @@
             Currently bookable on Airbnb — The XIV Century Duplex
           </a> --}}
           <div class="reveal reveal-delay-3">
+            @if($property->airbnb_url)
             <a href="{{ $property->airbnb_url }}" target="_blank" rel="noopener"
               class="airbnb-banner inline-flex items-center gap-3 mb-10">
               <div class="airbnb-dot"></div>
@@ -110,6 +260,7 @@
                 Now available on Airbnb — {{ $property->name }}
               </span>
             </a>
+            @endif
             <a href="https://wa.me/385996551938?text=Hola,%20me%20interesa%20consultar%20disponibilidad%20para%20fechas%20XXX" 
               class="btn-editorial">
               Check availability → WhatsApp

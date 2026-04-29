@@ -4,6 +4,12 @@ Luxury heritage rental website for Case dei Nobili — four historic residences 
 
 ---
 
+si
+
++34 910 75 92 45
+Tu ID de cliente IONOS: 531657884
+PIN telefónico temporal: 6536
+
 ## 🏛️ Features
 
 - Responsive landing page with scroll animations, hover zoom effects, and smooth transitions
@@ -180,7 +186,7 @@ casadeinobili/
 | `npm run dev` | Watch mode — rebuilds `public/css/tailwind.css` on every change |
 | `npm run build` | One-time production build (minified) |
 
-> **Never edit `public/css/tailwind.css` directly** — it gets overwritten on every build.  
+> **Never edit `public/css/tailwind.css` directly** — it gets overwritten on every build.
 > Edit `resources/css/app.css` for Tailwind source, or `public/css/app.css` for custom CSS.
 
 ### Laravel
@@ -258,7 +264,7 @@ chmod -R 755 storage bootstrap/cache
 
 ### 6. Point your web server
 
-Apache: document root → `public/`  
+Apache: document root → `public/`
 Nginx: root → `public/`, index → `index.php`
 
 ---
@@ -287,7 +293,7 @@ npm run build
 
 ### Change SEO metadata
 
-Each view defines its own `@section('title')`, `@section('meta_description')`, etc.  
+Each view defines its own `@section('title')`, `@section('meta_description')`, etc.
 Defaults are set in `resources/views/layouts/app.blade.php`.
 
 ---

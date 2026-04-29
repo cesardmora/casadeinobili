@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('css/appFooter.css') }}?v={{ filemtime(public_path('css/appFooter.css')) }}">
+{{-- <link rel="stylesheet" href="{{ asset('css/appFooter.css') }}?v={{ filemtime(public_path('css/appFooter.css')) }}"> --}}
 
 <!-- FOOTER -->
 <footer>
@@ -49,12 +49,12 @@
            data-i18n="fv3">Contact</a>
       </li>
       <li><a href="{{ route('privacy') }}" data-i18n="fv4">Privacy</a></li>
-      <li><a href="{{ route('terms') }}" data-i18n="fv4">Terms</a></li>
+      <li><a href="{{ route('terms') }}" data-i18n="fv5">Terms</a></li>
     </ul>
   </div>
   <div class="footer-bottom">
-    <span data-i18n="footer_copy">© 2026 TCG unique properties d.o.o. All rights reserved.</span>
-    <span style="color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;font-size:0.52rem;">Case dei Nobili · Korčula · Croatia</span>
+    <span data-i18n="footer_copy">© 2026 TCG Unique Properties d.o.o. All rights reserved.</span>
+    <span>Case dei Nobili · Korčula · Croatia</span>
     <span class="footer-credit">Designed by <a href="https://wantdsign.com/" target="_blank" rel="noopener nofollow">Wantdsign Studio</a> & 
       <a href="http://www.byladesign.com/" target="_blank" rel="noopener nofollow">Byladesign </a></span>
   </div>

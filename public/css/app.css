@@ -223,7 +223,7 @@ body {
     rgba(184, 149, 107, 0.08) 0%,
     transparent 50%
   );
-  animation: rotateGlow 30s linear infinite;
+  /* animation: rotateGlow 30s linear infinite; */
 }
 
 @keyframes rotateGlow {
@@ -264,9 +264,9 @@ body {
   display: inline-block;
   text-decoration: none;
 
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   letter-spacing: 0.25em;
-  text-transform: uppercase;
+
   background: var(--gold);
   color: var(--dark);
   padding: 1rem 2rem;

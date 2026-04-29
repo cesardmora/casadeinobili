@@ -42,6 +42,12 @@ php artisan route:cache
 php artisan view:cache
 php artisan optimize
 
+
+
+/* --font-display: "Cormorant Garamond", "Iowan Old Style",
+    "Palatino Linotype", "Book Antiqua", Baskerville, Georgia, serif; */
+
+	
 |------|---------||------|---------||------|---------||------|---------||------|---------||------|---------|
 
 5. Imágenes sin optimizar

@@ -6,7 +6,12 @@ module.exports = {
     "./public/js/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+        // '12xl': '96rem',
+        "12xl": "95%", // ~1536px — used as wide content wrapper
+      },
+    },
   },
   plugins: [],
-}
+};

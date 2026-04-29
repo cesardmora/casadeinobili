@@ -11,7 +11,7 @@
   <meta name="description" content="@yield('meta_description', 'Four historic residences on the island of Korčula. Each one, a livable chapter of Dalmatian history.')">
   <link rel="canonical" href="@yield('canonical', url()->current())">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ asset('sitemap.xml') }}">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ route('sitemap') }}">
   <link rel="alternate" type="text/plain" title="LLMs" href="{{ asset('llms.txt') }}">
 
   {{-- Favicon --}}
@@ -25,6 +25,8 @@
   <meta property="og:title" content="@yield('title', 'Case dei Nobili | A five-century collection in Korčula')">
   <meta property="og:description" content="@yield('meta_description', 'Four historic residences on the island of Korčula. Each one, a livable chapter of Dalmatian history.')">
   <meta property="og:image" content="@yield('og_image', asset('images/Korcula_birds_eye_2.webp'))">
+  <meta property="og:image:width" content="@yield('og_image_width', '1200')">
+  <meta property="og:image:height" content="@yield('og_image_height', '630')">
   <meta property="og:image:alt" content="@yield('og_image_alt', 'Case dei Nobili historic residences in Korčula')">
   <meta property="og:url" content="@yield('canonical', url()->current())">
 
@@ -80,6 +82,12 @@
   {{-- Global styles --}}
   <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ filemtime(public_path('css/app.css')) }}">
 
+  {{-- Footer styles --}}
+  <link rel="stylesheet" href="{{ asset('css/appFooter.css') }}?v={{ filemtime(public_path('css/appFooter.css')) }}">
+
+
+  {{-- Hero image preload (overridden per page) --}}
+  @stack('preload')
   @stack('head')
   @stack('schema')
   <style>

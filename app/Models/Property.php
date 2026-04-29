@@ -29,6 +29,8 @@ class Property extends Model
         'sort_order',
         'amenities',
         'location',
+        'latitude',
+        'longitude',
     ];
 
     protected $casts = [
@@ -40,7 +42,25 @@ class Property extends Model
         'bedrooms'       => 'integer',
         'bathrooms'      => 'integer',
         'sort_order'     => 'integer',
+        'latitude' => 'float',
+        'longitude' => 'float',
     ];
+
+    // -------------------------
+    // Cache invalidation
+    // -------------------------
+
+    protected static function booted(): void
+    {
+        static::saved(function () {
+            cache()->forget('properties_home_collection');
+            cache()->forget('properties_index_collection');
+        });
+        static::deleted(function () {
+            cache()->forget('properties_home_collection');
+            cache()->forget('properties_index_collection');
+        });
+    }
 
     // -------------------------
     // Scopes

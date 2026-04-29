@@ -36,7 +36,7 @@
   <section class="hero-section">
     <div class="hero-bg"></div>
     <x-responsive-image
-      src="https://images.unsplash.com/photo-1600585154526-990dced4db0d"
+      src="images/Korcula_night.webp"
       alt="About Us"
       class="hero-img-desktop"
       sizes="100vw"
@@ -108,11 +108,15 @@
         <div class="reveal reveal-delay-2">
           <div class="relative aspect-[4/5]">
             <x-responsive-image
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+              {{-- src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64" --}}
               alt="Historia vonGriesheim"
               class="w-full h-full object-cover"
               sizes="(min-width: 1024px) 42vw, 100vw"
               :widths="[480, 768, 1200, 1600]"
+
+              src="images/Korcula_night.webp"
+              loading="eager"
+              fetchpriority="high"
             />
             <div class="absolute bottom-0 left-0 right-0 p-8"
                  style="background: linear-gradient(to top, rgba(13,31,40,0.8), transparent);">
